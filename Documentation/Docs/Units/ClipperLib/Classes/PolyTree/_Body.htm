@@ -1,0 +1,166 @@
+<html>
+
+<head>
+    
+  <script type="text/javascript" src="../../../../../Scripts/jquery.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../../Scripts/SyntaxHighlighter/scripts/shCore.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
+    
+  <link type="text/css" rel="stylesheet" href="../../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
+  
+
+  <title>PolyTree</title>
+
+  <link rel="stylesheet" href="../../../../../Styles/default.css" type="text/css">
+
+  <meta name="Ancestor" content="PolyNode">
+
+    
+  <script type="text/javascript" src="../../../../../Scripts/bootstrap.js">
+  </script>
+  
+</head>
+
+<body bgcolor="#FFFFFF">
+    
+  <!-- THIS FILE HAS BEEN AUTOMATICALLY PROCESSED FROM A SOURCE COPY -->
+    
+  <!-- DO NOT EDIT MANUALLY !!! -->
+  
+  <table class="Banner" cellspacing="0" cellpadding="0" border="1" bordercolorlight="#303080" bordercolordark="#7070B0">
+    <tr>
+      <td class="Banner" nowrap=""><a href="../../../../_Body.htm" class="Banner"><img src="../../../../../Images/_Home.gif" align="absmiddle">Home</a>
+      </td>
+      <td class="Banner" nowrap=""><a href="../../_Body.htm" class="Banner"><img src="../../../../../Images/_Unit.gif" align="absmiddle">ClipperLib</a>
+      </td>
+      <td class="Banner" width="100%" align="right"><img src="../../../../../Images/_Project_Logo.gif" align="absmiddle">
+      </td>
+    </tr>
+  </table>
+  <h1>PolyTree</h1>
+  <h2>Hierarchy</h2>
+  <p class="Hierarchy"></p>
+  <p class="Hierarchy">&nbsp;&nbsp;&nbsp;|</p>
+  <p class="Hierarchy"><a href="../PolyNode/_Body.htm">PolyNode</a></p>
+<br>
+
+  <p class="Body"> An empty <b>PolyTree</b> object can be passed as a parameter to Clipper's <a href="../Clipper/Methods/Execute.htm"><b>Execute</b></a> method which then populates and returns the object with polygon data that mirrors the parent-child relationships of the polygons in the solution. The PolyTree class replaces the obsolete <a href="../../Types/ExPolygons.htm">ExPolygons</a> structure that was unable to represent multi-level nesting of polygons.<br><br> The PolyTree structure is intended as a <b>read-only</b> data structure since it's never used to pass polygon data <b>to</b> a Clipper object.<br><br> The <b>PolyTree</b> object encapsulates any number <a href="../PolyNode/_Body.htm"><b>PolyNode</b></a> children, where each PolyNode object represents a single polygon (either an <a href="../../../../Overview/_Body.htm#terminology">outer</a> or <a href="../../../../Overview/_Body.htm#terminology">hole</a> polygon). <span class="maroon">PolyTree is a specialized PolyNode</span> that contains all the PolyNodes within the tree. <span class="maroon">Its <a href="../PolyNode/Properties/Contour.htm">Contour</a> property will always be empty.</span> The PolyTree's immediate children represent the top-level <em>outer</em> polygons in the solution returned by the Clipper object. These top-level PolyNodes may contain their own PolyNode children representing hole polygons that may also contain children representing nested outer polygons etc. Children of <em>outers</em> will always be <em>holes</em>, and children of <em>holes</em> will always be <em>outers</em>.<br><br> <span class="maroon">Since the PolyTree data structure is more complex than the alternative <a href="../../Types/Polygons.htm"><b>Polygons</b></a> data structure that's passed to Clipper's overloaded Execute method, and because it's more computationally expensive to process (roughly 5-10% slower), it should only be used when parent-child polygon relationships are needed and not just polygon coordinates.</span><br><br> <div align="left"> 
+      <table cellspacing="2" cellpadding="0" border="0">
+
+        <tr>
+	
+          <td style="background-color: #FFFFFF;">
+<img src="../../../../../Images/polytree.png" alt="" border="0">
+	
+          </td>
+	
+          <td style="background-color: #FFFFFF;">
+
+            <pre style="font-family: Verdana, Arial, Helvetica, sans-serif;">
+
+    <b>polytree:</b> 
+    Contour = <b>()</b>
+    ChildCount = <b>1</b>
+    Childs[0]: 
+        Contour = ((10,10),(100,10),(100,100),(10,100))
+        IsHole = <b>False</b>
+        ChildCount = <b>1</b>
+        Childs[0]: 
+            Contour = ((20,20),(20,90),(90,90),(90,20))
+            IsHole = <b>True</b>
+            ChildCount = <b>2</b>
+            Childs[0]: 
+                Contour = ((30,30),(50,30),(50,50),(30,50))
+                IsHole = <b>False</b>
+                ChildCount = <b>0</b>
+            Childs[1]: 
+                Contour = ((60,60),(80,60),(80,80),(60,80))
+                IsHole = <b>False</b>
+                ChildCount = <b>0</b>
+
+            </pre>
+	
+          </td>
+
+        </tr>
+
+      </table> </div> </p>
+
+  <h2 id="Auto-Reference">Reference</h2>
+  <table>
+    <tr><th>Methods
+      </th><th>Properties
+      </th>
+    </tr>
+    <tr>
+      <td colspan="2" class="White">In PolyTree:
+      </td>
+    </tr>
+    <tr>
+      <td><a href="Methods/Clear.htm">Clear</a>
+      </td>
+      <td><a href="Properties/Total.htm">Total</a>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="Methods/GetFirst.htm">GetFirst</a>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="White">In PolyNode:
+      </td>
+    </tr>
+    <tr>
+      <td><a href="../PolyNode/Methods/GetNext.htm">GetNext</a>
+      </td>
+      <td><a href="../PolyNode/Properties/ChildCount.htm">ChildCount</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td><a href="../PolyNode/Properties/Childs.htm">Childs</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td><a href="../PolyNode/Properties/Contour.htm">Contour</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td><a href="../PolyNode/Properties/IsHole.htm">IsHole</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td><a href="../PolyNode/Properties/Parent.htm">Parent</a>
+      </td>
+    </tr>
+  </table>
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../PolyNode/_Body.htm">PolyNode</a>, <a href="../../Types/ExPolygons.htm">ExPolygons</a>, <a href="../../Types/Polygons.htm">Polygons</a></p>
+    
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  
+</body>
+
+</html>

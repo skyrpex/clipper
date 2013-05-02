@@ -1,0 +1,234 @@
+<html>
+
+<head>
+    
+  <script type="text/javascript" src="../../Scripts/jquery.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shCore.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
+  
+
+  <title>Example</title>  
+
+  <link rel="stylesheet" href="../../Styles/default.css" type="text/css">
+
+    
+  <script type="text/javascript" src="../../Scripts/bootstrap.js">
+  </script>
+  
+</head>
+
+<body bgcolor="#FFFFFF">
+    
+  <!-- THIS FILE HAS BEEN AUTOMATICALLY PROCESSED FROM A SOURCE COPY -->
+    
+  <!-- DO NOT EDIT MANUALLY !!! -->
+  
+  <table class="Banner" cellspacing="0" cellpadding="0" border="1" bordercolorlight="#303080" bordercolordark="#7070B0">
+    <tr>
+      <td class="Banner" nowrap=""><a href="../_Body.htm" class="Banner"><img src="../../Images/_Home.gif" align="absmiddle">Home</a>
+      </td>
+      <td class="Banner" nowrap=""><a href="_Body.htm" class="Banner">Overview</a>
+      </td>
+      <td class="Banner" width="100%" align="right"><img src="../../Images/_Project_Logo.gif" align="absmiddle">
+      </td>
+    </tr>
+  </table>
+  <h1>Example</h1>
+
+  
+  <table cellspacing="0" cellpadding="0" border="0" align="left" style="margin: 0;" width="600px">
+  <th align="left">Delphi Code Sample:
+    </th>
+  
+    <tr>
+      <td class="White">
+  
+        <pre class="brush: delphi;">
+  uses
+    graphics32, clipper;
+  
+  function GetEllipsePoints(bounds: TIntRect): TPolygon;
+  begin
+    //code to create an elliptical polygon here
+  end;
+	
+  procedure DrawPolygons(polys: TPolygons; color: TColor32);
+  begin
+    //code to display the polygons here
+  end;
+	
+  var
+    sub, clp, sol: TPolygons;
+  begin
+
+    //set up the subject and clip polygons ...
+    setlength(sub, 3);
+    sub[0] := GetEllipsePoints(IntRect(100,100,300,300));
+    sub[1] := GetEllipsePoints(IntRect(125,130,275,180));
+    sub[2] := GetEllipsePoints(IntRect(125,220,275,270));
+	
+    setlength(clp, 1);
+    clp[0] := GetEllipsePoints(IntRect(140,70,220,320));
+
+    //display the subject and clip polygons ...
+    DrawPolygons(sub, 0x8033FFFF);
+    DrawPolygons(clp, 0x80FFFF33);
+    
+    //get the intersection of the subject and clip polygons ...
+    with TClipper.Create do
+    try
+      AddPolygons(sub, ptSubject);
+      AddPolygons(clp, ptClip);
+      Execute(ctIntersection, sol, pftEvenOdd, pftEvenOdd);
+    finally
+      free;
+    end;
+    
+    //finally draw the intersection polygons ...
+    DrawPolygons(sol, 0x40808080);
+        </pre>
+  
+      </td>
+    </tr>
+  
+  </table>
+  <div style="clear:both">&nbsp;</div>
+      
+  
+  
+  <table cellspacing="0" cellpadding="0" border="0" align="left" style="margin: 0;" width="600px">
+  <th align="left">C++ Code Sample:
+    </th>
+  
+    <tr>
+      <td class="White">
+  
+        <pre class="brush: cpp;">
+  #include "clipper.hpp"
+  
+  ...
+
+  //from clipper.hpp ...
+  //typedef long long long64;
+  //struct IntPoint {long64 X; long64 Y;};
+  //typedef std::vector&lt;IntPoint&gt; Polygon;
+  //typedef std::vector&lt;Polygon&gt; Polygons;
+
+  using namespace ClipperLib;
+
+  void GetEllipsePoints(IntRect& bounds, Polygon& p)
+  {/* ... */}
+  
+  void DrawPolygons(Polygons& p, unsigned color)
+  {/* ... */}
+  
+  int main()
+  {
+    //set up the subject and clip polygons ...
+    Polygons sub(3);
+    GetEllipsePoints(IntRect(100,100,300,300), sub[0]);
+    GetEllipsePoints(IntRect(125,130,275,180), sub[1]);
+    GetEllipsePoints(IntRect(125,220,275,270), sub[2]);
+    
+    Polygons clp(1);
+    GetEllipsePoints(IntRect(140,70,220,320), clp[0]);
+    
+    //display the subject and clip polygons ...
+    DrawPolygons(sub, 0x8033FFFF);
+    DrawPolygons(clp, 0x80FFFF33);
+    
+    //get the intersection of the subject and clip polygons ...
+    Clipper clpr;
+    clpr.AddPolygons(sub, ptSubject);
+    clpr.AddPolygons(clp, ptClip);
+    Polygons sol;
+    clpr.Execute(ctIntersection, sol, pftEvenOdd, pftEvenOdd);
+    
+    //finally draw the intersection polygons ...
+    DrawPolygons(sol, 0x40808080);
+  }
+        </pre>
+		
+  
+      </td>
+    </tr>
+  
+  </table>
+  <div style="clear:both">&nbsp;</div>
+     
+  
+  <table cellspacing="0" cellpadding="0" border="0" align="left" style="margin: 0;" width="600px">
+  <th align="left">C# Code Sample:
+    </th>
+  
+    <tr>
+      <td class="White">
+  
+        <pre class="brush: csharp;">
+  ...
+  using ClipperLib;
+	
+  ...
+  using Polygon = List&lt;IntPoint&gt;;
+  using Polygons = List&lt;List&lt;IntPoint&gt;&gt;;
+  
+  static Polygon GetEllipsePoints(IntRect bounds)
+  {/* ... */}
+  
+  static void DrawPolygons(Polygon p, unsigned color)
+  {/* ... */}
+  
+  static void Main(string[] args)
+  {
+    Polygons subjs = new Polygons(3);
+    subjs.Add(GetEllipsePoints(new IntRect(100,100,300,300)));
+    subjs.Add(GetEllipsePoints(new IntRect(125,130,275,180)));
+    subjs.Add(GetEllipsePoints(new IntRect(125,220,275,270)));
+    
+    Polygons clips = new Polygons(1);
+    clips.Add(GetEllipsePoints(new IntRect(140,70,220,320)));
+    
+    DrawPolygons(subjs, 0x8033FFFF);
+    DrawPolygons(clips, 0x80FFFF33);
+    
+    Polygons solution = new Polygons();
+    Clipper c = new Clipper();
+    c.AddPolygons(subjs, PolyType.ptSubject);
+    c.AddPolygons(clips, PolyType.ptClip);
+    c.Execute(ClipType.ctIntersection, solution);
+    
+    DrawPolygons(solution, 0x40808080);
+  }
+        </pre>
+  
+      </td>
+    </tr>
+  
+  </table>
+
+  <div style="clear:both">&nbsp;</div>
+  <img src="../../Images/sample1.png" alt="" border="0">
+  
+  
+    
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  
+</body>
+
+
+</html>
