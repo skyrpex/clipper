@@ -53,7 +53,7 @@
 
   <p class="Decl5">Why does Clipper use integer coordinates, not floats?</p>
 
-  <p class="Decl4">This has been done to preserve numerical robustness. Early versions of the library did use floating point coordinates, but it became apparent that floating point imprecision was always going to cause occasional and unpredictable errors.<br><br> </p>
+  <p class="Decl4">This has been done to preserve <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf" target="_blank">numerical robustness</a>. Early versions of the library did use floating point coordinates, but it became apparent that floating point imprecision was always going to cause occasional errors.<br><br> </p>
 
 
   <p class="Decl5">How do I use floating point coordinates with Clipper?</p>
@@ -95,7 +95,7 @@
 
   <p class="Decl5">Is it possible to get the offset of a line or a polyline?</p>
 
-  <p class="Decl4"> Yes, just convert the polyline into a 'flat' polygon. Do this by appending to the polyline a reverse copy of the polyline while avoiding duplicate coordinates at each end: c1,c2,...,cn, c(n-1),...,c2. (You don't need to append anything if there are just two vertices forming a single line.)<br><br> 
+  <p class="Decl4"> Yes. If it's two vertices forming a single line, just treat this line as if it were a polygon. Polylines however must first be converted into 'flat' polygons. Do this by appending to the polyline a reverse copy of the polyline while avoiding duplicating the end coordinates: c1,c2,...,cn,c(n-1),c(n-2),...,c2. <br><br> 
     <table cellspacing="0" cellpadding="0" border="1" align="left" style="margin: 0;">
 
       <tr>
@@ -142,7 +142,7 @@ begin
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Units/ClipperLib/Routines/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Routines/ReversePolygons.htm">ReversePolygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

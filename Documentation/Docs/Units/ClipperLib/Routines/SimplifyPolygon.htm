@@ -59,13 +59,16 @@
 <br>
 
 
-  <p class="Body"> Removes self-intersections from 'poly' (by performing a boolean <em>union</em> operation using the nominated <a href="../Types/PolyFillType.htm">PolyFillType</a>).<br><br> <img src="../../../../Images/simplify.png" alt="" border="0"> </p>
+  <p class="Body"> Removes self-intersections from the supplied polygon (by performing a boolean <em>union</em> operation using the nominated <a href="../Types/PolyFillType.htm">PolyFillType</a>).<br> Polygons with non-contiguous duplicate vertices (ie 'touching') will be split into two polygons.<br><br> C++ only: The <em>in_polys</em> and <em>out_polys</em> parameters can reference the same object.<br><br> <img src="../../../../Images/simplify.png" alt="" border="0"><br> <img src="../../../../Images/simplify2.png" alt="" border="0"> <img src="../../../../Images/simplify3.png" alt="" border="0"> </p>
+
+
+
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Types/PolyFillType.htm">PolyFillType</a></p>
+  <p class="Body"><a href="../Classes/Clipper/Properties/ForceSimple.htm">Clipper.ForceSimple</a>, <a href="CleanPolygon.htm">CleanPolygon</a>, <a href="../Types/PolyFillType.htm">PolyFillType</a>, <a href="../Types/Polygon.htm">Polygon</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

@@ -50,19 +50,19 @@
   </table>
   <h1>Polygon</h1>
 
-  <p class="Decl"><span class="Comment">Del.&raquo;</span> TPolygon = <b>array of</b> <a href="./IntPoint.htm">TIntPoint</a>;</p>
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> TPolygon = <b>array of</b> TIntPoint;</p>
 
-  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef</b> std::vector&lt; <a href="./IntPoint.htm">IntPoint</a> &gt; Polygon;</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef</b> std::vector&lt;IntPoint&gt; Polygon;</p>
 
-  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>using</b> Polygon = List&lt;<a href="./IntPoint.htm">IntPoint</a>&gt;;</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>using</b> Polygon = List&lt;IntPoint&gt;;</p>
 <br>
 
-  <p class="Body"> This structure contains a list of vertices defining <span class="maroon">a single closed path</span> (see also <a href="../../../Overview/_Body.htm#terminology">terminology</a>).<br><br> Multiple polygons (both <a href="../../../Overview/_Body.htm#terminology">outers</a> and <a href="../../../Overview/_Body.htm#terminology">holes</a>) can be encapuslated within a <a href="./Polygons.htm">Polygons</a> structure.<br><br>     </p>
+  <p class="Body"> This structure contains a sequence of <a href="./IntPoint.htm">IntPoint</a> vertices defining <span class="maroon">a single path</span> (see also <a href="../../../Overview/_Body.htm#terminology">terminology</a>). This path is almost always a <span class="maroon"><b>closed</b></span> path. The exception to this is when it's passed to the <a href="../Routines/OffsetPolyLines.htm">OffsetPolyLines</a> function. There the <em>polylines</em> parameter represents an <span class="maroon"><b>open</b></span> path (unless otherwise indicated by the function's <a href="EndType.htm">EndType</a> parameter).<br><br> Multiple polygons (both <a href="../../../Overview/_Body.htm#terminology">outers</a> and <a href="../../../Overview/_Body.htm#terminology">holes</a>) are encapsulated within a <a href="./Polygons.htm">Polygons</a> structure.<br><br>     </p>
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="../../../Overview/Example.htm">Example</a>, <a href="../Classes/ClipperBase/Methods/AddPolygon.htm">ClipperBase.AddPolygon</a>, <a href="../Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Routines/Orientation.htm">Orientation</a>, <a href="IntPoint.htm">IntPoint</a>, <a href="Polygons.htm">Polygons</a></p>
+  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="../../../Overview/Example.htm">Example</a>, <a href="../Classes/ClipperBase/Methods/AddPolygon.htm">ClipperBase.AddPolygon</a>, <a href="../Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Routines/OffsetPolyLines.htm">OffsetPolyLines</a>, <a href="../Routines/Orientation.htm">Orientation</a>, <a href="EndType.htm">EndType</a>, <a href="IntPoint.htm">IntPoint</a>, <a href="Polygons.htm">Polygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

@@ -60,23 +60,18 @@
   <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public virtual bool</b> AddPolygons(<a href="../../../Types/Polygons.htm">Polygons</a> ppg, <a href="../../../Types/PolyType.htm">PolyType</a> polyType);</p>
 <br>
 
-  <p class="Body"> Any number of subject and clip polygons can be added to the clipping task, either individually via the AddPolygon() method, or as groups via the AddPolygons() method, or even using both methods.<br><br> Adjacent vertices with identical coordinates will be treated as a single vertex. Whereever 3 adjacent vertices form a single colinear edge, the middle vertex will be ignored.</p>
-<br>
+  <p class="Body"> Any number of subject and clip polygons can be added to the clipping task, either individually via the AddPolygon() method, or as groups via the AddPolygons() method, or even using both methods.<br><br> Polygon <a href="../../../Routines/Orientation.htm">orientation</a> should conform with the <a href="../../../Types/PolyFillType.htm">polygon filling rule</a> that will be applied (see Clippper's <a href="../../Clipper/Methods/Execute.htm">Execute</a> method).<br><br> </p>
 
 
-  <p class="Body"><b>Polygon Orientation:</b><br> Outer polygons can be either clockwise or counter-clockwise as long as any inner 'hole' polygons have the reverse orientation.</p>
-<br>
+  <p class="Body"><b>Polygon Coordinate range</b>:<br> Polygon coordinates must be between &plusmn; 0x3FFFFFFFFFFFFFFF (&plusmn; <b>4.6e+18</b>), otherwise a range error will be thrown when attempting to add the polygon to the Clipper object. If coordinates can be kept between &plusmn; 0x3FFFFFFF (&plusmn; <b>1.0e+9</b>), a modest increase in performance (approx. 15-20%) over the larger range can be achieved by avoiding large integer math.<br><br></p>
 
 
-  <p class="Body"><b>Polygon Coordinate range</b>:<br> Polygon coordinates must be between &plusmn; 0x3FFFFFFFFFFFFFFF (&plusmn; <b>4.6e+18</b>), otherwise a range error will be thrown when attempting to add the polygon to the Clipper object. If coordinates can be kept between &plusmn; 0x3FFFFFFF (&plusmn; <b>1.0e+9</b>), a modest increase in performance (approx. 15-20%) over the larger range can be achieved by avoiding large integer math.</p>
-
-
-  <p class="Body"><b>The function will return false if:</b> 
+  <p class="Body"> <b>Return Value:</b><br> The function will return false if <em>all</em> polygons are empty. A polygon is empty when: 
     <ul>
 	
-      <li>there are less than 3 coordinates defining the polygon (once duplicates have been excluded).</li>
+      <li>there are less than 3 coordinates defining the polygon</li>
 	
-      <li>all polygon coordinates are co-linear.</li>
+      <li>the coordinates are all co-linear</li>
 
     </ul> </p>
 
@@ -86,9 +81,9 @@
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../../../../../Overview/Example.htm">Example</a>, <a href="AddPolygon.htm">AddPolygon</a>, <a href="../../../Types/Polygons.htm">Polygons</a>, <a href="../../../Types/PolyType.htm">PolyType</a></p>
+  <p class="Body"><a href="../../../../../Overview/Example.htm">Example</a>, <a href="../../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="AddPolygon.htm">AddPolygon</a>, <a href="../../../Routines/Orientation.htm">Orientation</a>, <a href="../../../Types/PolyFillType.htm">PolyFillType</a>, <a href="../../../Types/Polygons.htm">Polygons</a>, <a href="../../../Types/PolyType.htm">PolyType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

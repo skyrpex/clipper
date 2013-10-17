@@ -58,15 +58,15 @@
 <br>
 
 
-  <p class="Body"> The <b>IntPoint</b> structure is used to represent all vertices in the Clipper library. The <em>integer</em> storage type has been deliberately chosen to preserve <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf"><b>numerical robustness</b></a>. (Early versions of the library did use floating point coordinates, but it became apparent that floating point imprecision was always going to cause occasional and unpredictable errors.)<br><br> Series (ie arrays or lists) of IntPoints are contained within <a href="./Polygon.htm">Polygon</a> structures to represent a single polygon contour. </p>
+  <p class="Body"> The <b>IntPoint</b> structure is used to represent all vertices in the Clipper Library. The <em>integer</em> storage type has been deliberately chosen to preserve <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf" target="_blank"><b>numerical robustness</b></a>. (Early versions of the library used floating point coordinates, but it became apparent that floating point imprecision would always cause occasional errors.)<br><br> A sequence of IntPoints are contained within a <a href="./Polygon.htm">Polygon</a> structure to represent a single polygon contour.<br><br> Users wishing to clip or offset polygons containing <em>floating point</em> coordinates need to use appropriate scaling (see notes on <a href="../../../Overview/Rounding.htm">rounding</a>) when converting these values to and from <em>IntPoints</em>. </p>
 
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="long64.htm">long64</a>, <a href="Polygon.htm">Polygon</a>, <a href="Polygons.htm">Polygons</a></p>
+  <p class="Body"><a href="../../../Overview/Rounding.htm">Rounding</a>, <a href="long64.htm">long64</a>, <a href="Polygon.htm">Polygon</a>, <a href="Polygons.htm">Polygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

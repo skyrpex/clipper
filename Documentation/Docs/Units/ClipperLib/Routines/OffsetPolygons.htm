@@ -59,35 +59,32 @@
 <br>
 
 
-  <p class="Body">This function offsets the 'polys' polygons parameter by the 'delta' amount. Positive delta values expand outer polygons and contract inner 'hole' polygons. Negative deltas do the reverse.</p>
-<br>
+  <p class="Body">This function offsets the 'polys' polygons parameter by the 'delta' amount. Positive delta values expand outer polygons and contract inner 'hole' polygons. Negative deltas do the reverse.<br><br> (C++ only: The <em>in_polys</em> and <em>out_polys</em> parameters can reference the same object.) <br><br> </p>
 
 
-  <p class="Body">Edge joins may be one of three <a href="../Types/JoinType.htm">jointypes</a> - jtMiter, jtSquare or jtRound. (See the image below for examples.)<br><br> The meaning and use of the <b>limit</b> parameter depends on joinType: 
+  <p class="Body">Edge joins may be one of three <a href="../Types/JoinType.htm">jointypes</a> - jtMiter, jtSquare or jtRound. (See the image below for examples.)<br><br> <img src="../../../../Images/jointypes.png" alt="" border="0"><br><br> Just as with the <a href="./OffsetPolyLines.htm">OffsetPolyLines</a> function, the meaning and use of the <b>limit</b> parameter depends on joinType: 
     <ul>
 	
       <li>jtMiter: <i>limit</i> sets the maximum distance <em>in multiples of delta</em> that vertices can be offset from their original positions before squaring is applied. <b>The default value is 2</b> (ie twice delta) which is also the smallest allowed value. If offsetting was allowed without any limits (ie without squaring), then offsetting at very acute angles would produce unacceptably long 'spikes'.</li>
 	
-      <li>jtRound: <i>limit</i> sets the maximum distance that rounded joins can deviate from their true arcs (since it would require an infinite number of vertices to perfectly represent an arc). <b>The default limit is 0.25 units</b> though realisticlly precision can never be better than 0.5 since arc coordinates will still be rounded to integer values. When offsetting polygons with very large coordinate values (typically as a result of scaling), it's advisable to increase <em>limit</em> to maintain consistent precisions at all joins because the maximum number of vertices allowed in any arc is 222. (This hard coded upper limit has been chosen because the imprecision in a circle constructed with 222 vertices will be only 1/10000th its radius and, not only is creating very large numbers of arc vertices computationally expensive, it can cause out-of-memory problems.)</li>
+      <li>jtRound: <i>limit</i> sets the maximum distance that rounded joins can deviate from their true arcs (since it would require an infinite number of vertices to perfectly represent an arc). <b>The default limit is 0.25 units</b> though realistically precision can never be better than 0.5 since arc coordinates will still be rounded to integer values. When offsetting polygons with very large coordinate values (typically as a result of scaling), it's advisable to increase <em>limit</em> to maintain consistent precisions at all joins because the maximum number of vertices allowed in any arc is 222. (This hard coded upper limit has been chosen because the imprecision in a circle constructed with 222 vertices will be only 1/10000th its radius and, not only is creating very large numbers of arc vertices computationally expensive, it can cause out-of-memory problems.)</li>
 	
       <li>jtSquare: The <i>limit</i> parameter is ignored.</li>
 
     </ul> </p>
+<img src="../../../../Images/kangaroo_small.png" alt="" border="0" align="right">
+<br><br>
+
+
+  <p class="Body"> The polygons passed to OffsetPolygons <b>must not be self-intersecting</b> and need to be oriented such that <a href="../../../Overview/_Body.htm#terminology">outer</a> polygons have a <em>true</em> <a href="./Orientation.htm">orientation</a> and <a href="../../../Overview/_Body.htm#terminology">hole</a> polygons have a <em>false</em> orientation. If the orientations of input polygons are incorrect, the function will return unexpected results. Likewise, 'duplicate vertices' (ie consecutive vertices with identical coordinates, including start and end vertices) cause problems with the offset algorithm.<br><br> The <b>autoFix</b> parameter when <em>true</em> will force the function to check for and fix incorrect polygon orientations and remove duplicate vertices. However, if orientations are known to be correct and there's no likelihood of duplicate vertices, then it's advisable to set <em>autoFix</em> to <em>false</em> since 'auto-fixing' is computationally expensive.<br><br> Offsetting self-intersecting polygons can be achieved by first calling <a href="./SimplifyPolygons.htm">SimplyPolygons</a>.</p>
 <br>
 
-
-  <p class="Body"><img src="../../../../Images/jointypes.png" alt="" border="0"></p>
-
-<br>
-
-  <p class="Body">The polygons passed to this function <b>must not be self-intersecting</b> and need to be oriented such that <a href="../../../Overview/_Body.htm#terminology">outer</a> polygons have a <em>true</em> <a href="./Orientation.htm">orientation</a> and <a href="../../../Overview/_Body.htm#terminology">hole</a> polygons have a <em>false</em> orientation. If the orientations of input polygons are incorrect, the function will return unexpected results. Likewise, 'duplicate vertices' (ie consecutive vertices with identical coordinates, including start and end vertices) cause problems with the offset algorithm.<br><br> The <b>autoFix</b> parameter when <em>true</em> will force the function to check for and fix incorrect polygon orientations and remove duplicate vertices. However, if orientations are known to be correct and there's no likelihood of duplicate vertices, then it's advisable to set <em>autoFix</em> to <em>false</em> since 'auto-fixing' is computationally expensive.</p>
-<br>
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="Orientation.htm">Orientation</a>, <a href="../Types/JoinType.htm">JoinType</a></p>
+  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="OffsetPolyLines.htm">OffsetPolyLines</a>, <a href="Orientation.htm">Orientation</a>, <a href="SimplifyPolygons.htm">SimplifyPolygons</a>, <a href="../Types/JoinType.htm">JoinType</a>, <a href="../Types/Polygon.htm">Polygon</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

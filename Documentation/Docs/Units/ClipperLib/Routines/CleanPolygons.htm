@@ -59,25 +59,26 @@
 <br>
 
 
-  <p class="Body"> Removes: 
+  <p class="Body"> Removes vertices: 
     <ul>
 	
-      <li>vertices that join co-linear edges</li>
+      <li>that join co-linear edges</li>
 	
-      <li>a vertex that's within the specified distance of an adjacent vertex</li>
+      <li>positioned within the specified distance of an adjacent vertex</li>
 	
-      <li>a vertex that's within the specified distance of a semi-adjacent vertex together with the out-lying vertex</li>
+      <li>positioned within the specified distance of a semi-adjacent vertex together with their out-lying vertices</li>
 
     </ul> </p>
 
-  <p class="Body"> The default distance approximates &radic;2 so that if vertices have their corresponding X and Y coordinates differ by no more than 1 unit, then one of the vertices will be removed (plus the out-lying vertex if they are semi-adjacent vertices).<br><br> <img src="../../../../Images/clean1.png" alt="" border="0">&nbsp;&nbsp;&nbsp; <img src="../../../../Images/clean2.png" alt="" border="0"> </p>
+  <p class="Body"> Vertices are <em>semi-adjacent</em> when they are separated by a single (out-lying) vertex. The <em>distance</em> parameter's default value approximates &radic;2 so that adjacent or semi-adjacent vertices having their corresponding X and Y coordinates differing by no more than 1 unit will precipitate the removal of one the vertices (together with the out-lying vertex if they are semi-adjacent).<br><br> <img src="../../../../Images/clean1.png" alt="" border="0">&nbsp;&nbsp;&nbsp; <img src="../../../../Images/clean2.png" alt="" border="0"> </p>
+
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="CleanPolygon.htm">CleanPolygon</a></p>
+  <p class="Body"><a href="CleanPolygon.htm">CleanPolygon</a>, <a href="SimplifyPolygons.htm">SimplifyPolygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

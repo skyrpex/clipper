@@ -1,8 +1,8 @@
 /*******************************************************************************
 *                                                                              *
 * Author    :  Angus Johnson                                                   *
-* Version   :  5.1.4                                                           *
-* Date      :  24 March 2013                                                   *
+* Version   :  5.1.6                                                           *
+* Date      :  23 May 2013                                                     *
 * Website   :  http://www.angusj.com                                           *
 * Copyright :  Angus Johnson 2010-2013                                         *
 *                                                                              *
@@ -101,6 +101,7 @@ private:
 };
         
 enum JoinType { jtSquare, jtRound, jtMiter };
+enum EndType { etClosed, etButt, etSquare, etRound};
 
 bool Orientation(const Polygon &poly);
 double Area(const Polygon &poly);
@@ -108,14 +109,17 @@ double Area(const Polygon &poly);
 void OffsetPolygons(const Polygons &in_polys, Polygons &out_polys,
   double delta, JoinType jointype = jtSquare, double limit = 0, bool autoFix = true);
 
+void OffsetPolyLines(const Polygons &in_lines, Polygons &out_lines,
+  double delta, JoinType jointype = jtSquare, EndType endtype = etSquare, double limit = 0, bool autoFix = true);
+
 void SimplifyPolygon(const Polygon &in_poly, Polygons &out_polys, PolyFillType fillType = pftEvenOdd);
 void SimplifyPolygons(const Polygons &in_polys, Polygons &out_polys, PolyFillType fillType = pftEvenOdd);
 void SimplifyPolygons(Polygons &polys, PolyFillType fillType = pftEvenOdd);
 
-void CleanPolygon(Polygon& in_poly, Polygon& out_poly, double distance = 1.415);
-void CleanPolygons(Polygons& in_polys, Polygons& out_polys, double distance = 1.415);
+void CleanPolygon(const Polygon& in_poly, Polygon& out_poly, double distance = 1.415);
+void CleanPolygons(const Polygons& in_polys, Polygons& out_polys, double distance = 1.415);
 
-void PolyTreeToPolygons(PolyTree& polytree, Polygons& polygons);
+void PolyTreeToPolygons(const PolyTree& polytree, Polygons& polygons);
 
 void ReversePolygon(Polygon& p);
 void ReversePolygons(Polygons& p);
@@ -123,6 +127,8 @@ void ReversePolygons(Polygons& p);
 //used internally ...
 enum EdgeSide { esLeft = 1, esRight = 2};
 enum IntersectProtects { ipNone = 0, ipLeft = 1, ipRight = 2, ipBoth = 3 };
+//inline IntersectProtects operator|(IntersectProtects a, IntersectProtects b)
+//{return static_cast<IntersectProtects>(static_cast<int>(a) | static_cast<int>(b));}
 
 struct TEdge {
   long64 xbot;
@@ -247,6 +253,8 @@ public:
   void Clear();
   bool ReverseSolution() {return m_ReverseOutput;};
   void ReverseSolution(bool value) {m_ReverseOutput = value;};
+  bool ForceSimple() {return m_ForceSimple;};
+  void ForceSimple(bool value) {m_ForceSimple = value;};
 protected:
   void Reset();
   virtual bool ExecuteInternal();
@@ -264,6 +272,7 @@ private:
   PolyFillType     m_SubjFillType;
   bool             m_ReverseOutput;
   bool             m_UsingPolyTree; 
+  bool             m_ForceSimple;
   void DisposeScanbeamList();
   void SetWindingCount(TEdge& edge);
   bool IsEvenOddFillType(const TEdge& edge) const;
@@ -286,10 +295,8 @@ private:
   void ProcessHorizontal(TEdge *horzEdge);
   void AddLocalMaxPoly(TEdge *e1, TEdge *e2, const IntPoint &pt);
   void AddLocalMinPoly(TEdge *e1, TEdge *e2, const IntPoint &pt);
+  OutRec* GetOutRec(int idx);
   void AppendPolygon(TEdge *e1, TEdge *e2);
-  void DoEdge1(TEdge *edge1, TEdge *edge2, const IntPoint &pt);
-  void DoEdge2(TEdge *edge1, TEdge *edge2, const IntPoint &pt);
-  void DoBothEdges(TEdge *edge1, TEdge *edge2, const IntPoint &pt);
   void IntersectEdges(TEdge *e1, TEdge *e2,
     const IntPoint &pt, const IntersectProtects protects);
   OutRec* CreateOutRec();
@@ -297,18 +304,18 @@ private:
   void DisposeAllPolyPts();
   void DisposeOutRec(PolyOutList::size_type index);
   bool ProcessIntersections(const long64 botY, const long64 topY);
-  void AddIntersectNode(TEdge *e1, TEdge *e2, const IntPoint &pt);
+  void InsertIntersectNode(TEdge *e1, TEdge *e2, const IntPoint &pt);
   void BuildIntersectList(const long64 botY, const long64 topY);
   void ProcessIntersectList();
   void ProcessEdgesAtTopOfScanbeam(const long64 topY);
   void BuildResult(Polygons& polys);
   void BuildResult2(PolyTree& polytree);
-  void SetHoleState(TEdge *e, OutRec *OutRec);
+  void SetHoleState(TEdge *e, OutRec *outrec);
   void DisposeIntersectNodes();
   bool FixupIntersectionOrder();
-  void FixupOutPolygon(OutRec &outRec);
+  void FixupOutPolygon(OutRec &outrec);
   bool IsHole(TEdge *e);
-  void FixHoleLinkage(OutRec &outRec);
+  void FixHoleLinkage(OutRec &outrec);
   void AddJoin(TEdge *e1, TEdge *e2, int e1OutIdx = -1, int e2OutIdx = -1);
   void ClearJoins();
   void AddHorzJoin(TEdge *e, int idx);
@@ -316,6 +323,7 @@ private:
   bool JoinPoints(const JoinRec *j, OutPt *&p1, OutPt *&p2);
   void FixupJoinRecs(JoinRec *j, OutPt *pt, unsigned startIdx);
   void JoinCommonEdges();
+  void DoSimplePolygons();
   void FixupFirstLefts1(OutRec* OldOutRec, OutRec* NewOutRec);
   void FixupFirstLefts2(OutRec* OldOutRec, OutRec* NewOutRec);
 };

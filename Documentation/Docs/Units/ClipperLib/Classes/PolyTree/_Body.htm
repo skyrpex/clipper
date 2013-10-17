@@ -57,7 +57,7 @@
   <p class="Hierarchy"><a href="../PolyNode/_Body.htm">PolyNode</a></p>
 <br>
 
-  <p class="Body"> An empty <b>PolyTree</b> object can be passed as a parameter to Clipper's <a href="../Clipper/Methods/Execute.htm"><b>Execute</b></a> method which then populates and returns the object with polygon data that mirrors the parent-child relationships of the polygons in the solution. The PolyTree class replaces the obsolete <a href="../../Types/ExPolygons.htm">ExPolygons</a> structure that was unable to represent multi-level nesting of polygons.<br><br> The PolyTree structure is intended as a <b>read-only</b> data structure since it's never used to pass polygon data <b>to</b> a Clipper object.<br><br> The <b>PolyTree</b> object encapsulates any number <a href="../PolyNode/_Body.htm"><b>PolyNode</b></a> children, where each PolyNode object represents a single polygon (either an <a href="../../../../Overview/_Body.htm#terminology">outer</a> or <a href="../../../../Overview/_Body.htm#terminology">hole</a> polygon). <span class="maroon">PolyTree is a specialized PolyNode</span> that contains all the PolyNodes within the tree. <span class="maroon">Its <a href="../PolyNode/Properties/Contour.htm">Contour</a> property will always be empty.</span> The PolyTree's immediate children represent the top-level <em>outer</em> polygons in the solution returned by the Clipper object. These top-level PolyNodes may contain their own PolyNode children representing hole polygons that may also contain children representing nested outer polygons etc. Children of <em>outers</em> will always be <em>holes</em>, and children of <em>holes</em> will always be <em>outers</em>.<br><br> <span class="maroon">Since the PolyTree data structure is more complex than the alternative <a href="../../Types/Polygons.htm"><b>Polygons</b></a> data structure that's passed to Clipper's overloaded Execute method, and because it's more computationally expensive to process (roughly 5-10% slower), it should only be used when parent-child polygon relationships are needed and not just polygon coordinates.</span><br><br> <div align="left"> 
+  <p class="Body"> The <b>PolyTree</b> data structure is <em>only</em> used to receive <em>solutions</em> from polygon clipping operations. Its advantage over the <a href="../../Types/Polygons.htm">Polygons</a> structure (which can also receive solutions) is that it also represents the parent-child relationships of the returned polygons.<br><br> An empty PolyTree object can be passed as the <em>solution</em> parameter to a <a href="../Clipper/_Body.htm">Clipper</a> object's <a href="../Clipper/Methods/Execute.htm"><b>Execute</b></a> method. Once the clipping operation is completed, this method returns with the PolyTree structure filled with data representing the solution.<br><br> A <b>PolyTree</b> object is a container for any number of <a href="../PolyNode/_Body.htm"><b>PolyNode</b></a> children, with each contained PolyNode representing a single polygon contour (either an <a href="../../../../Overview/_Body.htm#terminology">outer</a> or <a href="../../../../Overview/_Body.htm#terminology">hole</a> polygon). <span class="maroon">PolyTree itself is a specialized PolyNode whose immediate children represent the top-level <em>outer</em> polygons of the solution. (Its own <a href="../PolyNode/Properties/Contour.htm">Contour</a> property is always empty.)</span> The contained top-level PolyNodes may contain their own PolyNode children representing hole polygons that may also contain children representing nested outer polygons etc. Children of <em>outers</em> will always be <em>holes</em>, and children of <em>holes</em> will always be <em>outers</em>.<br><br> <span class="maroon">Since the PolyTree data structure is more complex than the alternative <a href="../../Types/Polygons.htm"><b>Polygons</b></a> data structure, and because it's more computationally expensive to process (the Execute method being roughly 5-10% slower), it should only be used when parent-child polygon relationships are needed and not just polygon coordinates.</span><br><br> <div align="left"> 
       <table cellspacing="2" cellpadding="0" border="0">
 
         <tr>
@@ -101,7 +101,8 @@
 
   <h2 id="Auto-Reference">Reference</h2>
   <table>
-    <tr><th>Methods
+    <tr><th>Fields
+      </th><th>Methods
       </th><th>Properties
       </th>
     </tr>
@@ -110,12 +111,16 @@
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="Methods/Clear.htm">Clear</a>
       </td>
       <td><a href="Properties/Total.htm">Total</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="Methods/GetFirst.htm">GetFirst</a>
       </td>
       <td>
@@ -126,6 +131,8 @@
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="../PolyNode/Methods/GetNext.htm">GetNext</a>
       </td>
       <td><a href="../PolyNode/Properties/ChildCount.htm">ChildCount</a>
@@ -134,10 +141,14 @@
     <tr>
       <td>
       </td>
+      <td>
+      </td>
       <td><a href="../PolyNode/Properties/Childs.htm">Childs</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td>
       </td>
       <td><a href="../PolyNode/Properties/Contour.htm">Contour</a>
@@ -146,10 +157,14 @@
     <tr>
       <td>
       </td>
+      <td>
+      </td>
       <td><a href="../PolyNode/Properties/IsHole.htm">IsHole</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td>
       </td>
       <td><a href="../PolyNode/Properties/Parent.htm">Parent</a>
@@ -157,9 +172,9 @@
     </tr>
   </table>
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../PolyNode/_Body.htm">PolyNode</a>, <a href="../../Types/ExPolygons.htm">ExPolygons</a>, <a href="../../Types/Polygons.htm">Polygons</a></p>
+  <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../Clipper/_Body.htm">Clipper</a>, <a href="../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../PolyNode/_Body.htm">PolyNode</a>, <a href="../../Types/Polygons.htm">Polygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.4 &nbsp; - &nbsp; Help file built on 26-March-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
   
 </body>
 

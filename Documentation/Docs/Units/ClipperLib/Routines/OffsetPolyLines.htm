@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    
+  <script type="text/javascript" src="../../../../Scripts/jquery.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shCore.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
+  
+
+  <title>OffsetPolyLines</title>
+
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
+
+    
+  <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
+  </script>
+  
+</head>
+
+<body bgcolor="#FFFFFF">
+    
+  <!-- THIS FILE HAS BEEN AUTOMATICALLY PROCESSED FROM A SOURCE COPY -->
+    
+  <!-- DO NOT EDIT MANUALLY !!! -->
+  
+  <table class="Banner" cellspacing="0" cellpadding="0" border="1" bordercolorlight="#303080" bordercolordark="#7070B0">
+    <tr>
+      <td class="Banner" nowrap=""><a href="../../../_Body.htm" class="Banner"><img src="../../../../Images/_Home.gif" align="absmiddle">Home</a>
+      </td>
+      <td class="Banner" nowrap=""><a href="../_Body.htm" class="Banner"><img src="../../../../Images/_Unit.gif" align="absmiddle">ClipperLib</a>
+      </td>
+      <td class="Banner" width="100%" align="right"><img src="../../../../Images/_Project_Logo.gif" align="absmiddle">
+      </td>
+    </tr>
+  </table>
+  <h1>OffsetPolyLines</h1>
+
+
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>function</b> OffsetPolyLines(<b>const</b> Polylines: TPolygons; <b>const</b> Delta: Double; JoinType: TJoinType = jtSquare; EndType: TEndType = etSquare; Limit: double = 0.0): TPolygons;</p>
+
+  <p class="Decl2"><span class="Comment"> C++&nbsp;&raquo;</span> <b>void</b> OffsetPolyLines(<b>const</b> Polygons &amp;in_polys, Polygons &amp;out_polys, <b>double</b> delta, JoinType jointype = jtSquare, EndType endtype = etSquare, <b>double</b> limit = 0.0);</p>
+
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public static</b> Polygons OffsetPolyLines(Polygons polylines, <b>double</b> delta, JoinType jointype = JoinType.jtSquare, EndType endtype = EndType.etSquare, <b>double</b> limit = 0.0);</p>
+<br>
+
+
+  <p class="Body"> This function offsets or grows the supplied <em>polylines</em> both inward and outward by the <em>delta</em> amount so that the resulting 'line' will have a width of twice delta.<br><br> The <em>polylines</em> parameter (<em>in_polys</em> &amp; <em>out_polys</em> in C++) represents a collection vertices that define one or more line contours. These contours are open by default, unless the EndType paramter indicates otherwise. (C++ only: The <em>in_polys</em> and <em>out_polys</em> parameters can reference the same object.) <br><br> Edge joins may be one of three <a href="../Types/JoinType.htm">jointypes</a> - jtMiter, jtSquare or jtRound.<br><br> Line ends may be one of four <a href="../Types/EndType.htm">endtypes</a> - etClosed, etButt, etSquare or etRound. (See the image below for examples.)<br><br> <img src="../../../../Images/polylines.png" alt="" border="0"><br><br> Just as with the <a href="./OffsetPolygons.htm">OffsetPolygons</a> function, the meaning and use of the <b>limit</b> parameter depends on joinType: 
+    <ul>
+	
+      <li>jtMiter: <i>limit</i> sets the maximum distance <em>in multiples of delta</em> that vertices can be offset from their original positions before squaring is applied. <b>The default value is 2</b> (ie twice delta) which is also the smallest allowed value. If offsetting was allowed without any limits (ie without squaring), then offsetting at very acute angles would produce unacceptably long 'spikes'.</li>
+	
+      <li>jtRound: <i>limit</i> sets the maximum distance that rounded joins can deviate from their true arcs (since it would require an infinite number of vertices to perfectly represent an arc). <b>The default limit is 0.25 units</b> though realistically precision can never be better than 0.5 since arc coordinates will still be rounded to integer values. When offsetting polygons with very large coordinate values (typically as a result of scaling), it's advisable to increase <em>limit</em> to maintain consistent precisions at all joins because the maximum number of vertices allowed in any arc is 222. (This hard coded upper limit has been chosen because the imprecision in a circle constructed with 222 vertices will be only 1/10000th its radius and, not only is creating very large numbers of arc vertices computationally expensive, it can cause out-of-memory problems.)</li>
+	
+      <li>jtSquare: The <i>limit</i> parameter is ignored.</li>
+
+    </ul> </p>
+
+
+
+
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Types/EndType.htm">EndType</a>, <a href="../Types/JoinType.htm">JoinType</a>, <a href="../Types/Polygon.htm">Polygon</a></p>
+    
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  
+</body>
+
+</html>
