@@ -62,18 +62,18 @@
   uses
     graphics32, clipper;
   
-  function GetEllipsePoints(bounds: TIntRect): TPolygon;
+  function GetEllipsePoints(bounds: TIntRect): TPath;
   begin
     //code to create an elliptical polygon here
   end;
 	
-  procedure DrawPolygons(polys: TPolygons; color: TColor32);
+  procedure DrawPolygons(polys: TPaths; color: TColor32);
   begin
     //code to display the polygons here
   end;
 	
   var
-    sub, clp, sol: TPolygons;
+    sub, clp, sol: TPaths;
   begin
 
     //set up the subject and clip polygons ...
@@ -92,8 +92,8 @@
     //get the intersection of the subject and clip polygons ...
     with TClipper.Create do
     try
-      AddPolygons(sub, ptSubject);
-      AddPolygons(clp, ptClip);
+      AddPaths(sub, ptSubject, true);
+      AddPaths(clp, ptClip, true);
       Execute(ctIntersection, sol, pftEvenOdd, pftEvenOdd);
     finally
       free;
@@ -124,28 +124,28 @@
   ...
 
   //from clipper.hpp ...
-  //typedef long long long64;
-  //struct IntPoint {long64 X; long64 Y;};
-  //typedef std::vector&lt;IntPoint&gt; Polygon;
-  //typedef std::vector&lt;Polygon&gt; Polygons;
+  //typedef long long cInt;
+  //struct IntPoint {cInt X; cInt Y;};
+  //typedef std::vector&lt;IntPoint&gt; Path;
+  //typedef std::vector&lt;Polygon&gt; Paths;
 
   using namespace ClipperLib;
 
-  void GetEllipsePoints(IntRect& bounds, Polygon& p)
+  void GetEllipsePoints(IntRect& bounds, Path& p)
   {/* ... */}
   
-  void DrawPolygons(Polygons& p, unsigned color)
+  void DrawPolygons(Paths& p, unsigned color)
   {/* ... */}
   
   int main()
   {
     //set up the subject and clip polygons ...
-    Polygons sub(3);
+    Paths sub(3);
     GetEllipsePoints(IntRect(100,100,300,300), sub[0]);
     GetEllipsePoints(IntRect(125,130,275,180), sub[1]);
     GetEllipsePoints(IntRect(125,220,275,270), sub[2]);
     
-    Polygons clp(1);
+    Paths clp(1);
     GetEllipsePoints(IntRect(140,70,220,320), clp[0]);
     
     //display the subject and clip polygons ...
@@ -154,13 +154,13 @@
     
     //get the intersection of the subject and clip polygons ...
     Clipper clpr;
-    clpr.AddPolygons(sub, ptSubject);
-    clpr.AddPolygons(clp, ptClip);
-    Polygons sol;
-    clpr.Execute(ctIntersection, sol, pftEvenOdd, pftEvenOdd);
+    clpr.AddPaths(sub, ptSubject, true);
+    clpr.AddPaths(clp, ptClip, true);
+    Paths solution;
+    clpr.Execute(ctIntersection, solution, pftEvenOdd, pftEvenOdd);
     
     //finally draw the intersection polygons ...
-    DrawPolygons(sol, 0x40808080);
+    DrawPolygons(solution, 0x40808080);
   }
         </pre>
 		
@@ -184,32 +184,32 @@
   using ClipperLib;
 	
   ...
-  using Polygon = List&lt;IntPoint&gt;;
-  using Polygons = List&lt;List&lt;IntPoint&gt;&gt;;
+  using Path = List&lt;IntPoint&gt;;
+  using Paths = List&lt;List&lt;IntPoint&gt;&gt;;
   
-  static Polygon GetEllipsePoints(IntRect bounds)
+  static Path GetEllipsePoints(IntRect bounds)
   {/* ... */}
   
-  static void DrawPolygons(Polygon p, unsigned color)
+  static void DrawPolygons(Path p, uint color)
   {/* ... */}
   
   static void Main(string[] args)
   {
-    Polygons subjs = new Polygons(3);
+    Paths subjs = new Paths(3);
     subjs.Add(GetEllipsePoints(new IntRect(100,100,300,300)));
     subjs.Add(GetEllipsePoints(new IntRect(125,130,275,180)));
     subjs.Add(GetEllipsePoints(new IntRect(125,220,275,270)));
     
-    Polygons clips = new Polygons(1);
+    Paths clips = new Paths(1);
     clips.Add(GetEllipsePoints(new IntRect(140,70,220,320)));
     
     DrawPolygons(subjs, 0x8033FFFF);
     DrawPolygons(clips, 0x80FFFF33);
     
-    Polygons solution = new Polygons();
+    Paths solution = new Paths();
     Clipper c = new Clipper();
-    c.AddPolygons(subjs, PolyType.ptSubject);
-    c.AddPolygons(clips, PolyType.ptClip);
+    c.AddPaths(subjs, PolyType.ptSubject, true);
+    c.AddPaths(clips, PolyType.ptClip, true);
     c.Execute(ClipType.ctIntersection, solution);
     
     DrawPolygons(solution, 0x40808080);
@@ -226,7 +226,7 @@
   
   
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 

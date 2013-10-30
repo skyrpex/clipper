@@ -59,10 +59,10 @@
 <br>
 
 
-  <p class="Body"> The <a href="../Routines/OffsetPolyLines.htm">OffsetPolyLines</a> function has an EndType parameter that accepts one of four end types: 
+  <p class="Body"> The <a href="../Functions/OffsetPaths.htm">OffsetPaths</a> function has an EndType parameter that accepts one of four end types: 
     <ul>
 	
-      <li><b>etClosed:</b> Ends are joined using the <a href="./JoinType.htm">JoinType</a> style.</li>
+      <li><b>etClosed:</b> There are no ends in a closed path.</li>
 	
       <li><b>etButt:</b> Ends are squared off abruptly.</li>
 	
@@ -72,12 +72,14 @@
 
     </ul> </p>
 
-  <p class="Body"> <img src="../../../../Images/polylines.png" alt="" width="620" height="200" border="0"> </p>
+  <p class="Body"> <img src="../../../../Images/endtypes.png" alt="" width="620" height="200" border="0"><br><br> Note: The order of the vertices in the last example has been changed because the OffsetPaths function does not accept self-intersecting <em>closed</em> paths. Self-intersecting closed paths must be 'simplified' before offsetting. The first 3 examples above show offsetting of <em>open</em> paths. There are no limitations to offsetting on open paths. </p>
+ 
+ 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Routines/OffsetPolyLines.htm">OffsetPolyLines</a>, <a href="JoinType.htm">JoinType</a></p>
+  <p class="Body"><a href="../Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="JoinType.htm">JoinType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 

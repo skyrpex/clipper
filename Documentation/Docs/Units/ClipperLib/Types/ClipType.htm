@@ -73,14 +73,27 @@
     </ul> <br> </p>
 
 
-  <p class="Body"> <img src="../../../../Images/cliptype.png" width="175" height="200" alt=""><br> <img src="../../../../Images/intersection.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/union.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/difference.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/xor.png" width="175" height="200" alt=""><br><br> All polygon clipping is performed with a <a href="../Classes/Clipper/_Body.htm">Clipper</a> object with the specific boolean operation indicated by the <em>ClipType</em> parameter passed in its <a href="../Classes/Clipper/Methods/Execute.htm">Execute</a> method. </p>
+  <p class="Body"> <img src="../../../../Images/cliptype.png" width="175" height="200" alt=""><br> <img src="../../../../Images/intersection.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/union.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/difference.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/xor.png" width="175" height="200" alt=""><br><br> All polygon clipping is performed with a <a href="../Classes/Clipper/_Body.htm">Clipper</a> object with the specific boolean operation indicated by the <em>ClipType</em> parameter passed in its <a href="../Classes/Clipper/Methods/Execute.htm">Execute</a> method. </p><br>
+
+
+  <p class="Body"> With regard to <b>open</b> paths (polylines), clipping rules generally match those of closed paths (polygons).<br> However, when there are both polyline and polygon subjects, the following clipping rules apply: 
+    <ul>
+	
+      <li>union operations - polylines will be clipped by any overlapping polygons so that non-overlapped portions will be returned in the solution together with the union-ed polygons</li>
+	
+      <li>intersection, difference and xor operations - polylines will be clipped only by 'clip' polygons and there will be not interaction between polylines and subject polygons.</li>
+
+    </ul> </p><br>
+
+
+  <p class="Body"> Example of clipping behaviour when mixing polyline and polygon subjects:<br> <img src="../../../../Images/line_clipping2.png"> </p>
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="../Classes/Clipper/_Body.htm">Clipper</a>, <a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 

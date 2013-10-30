@@ -57,12 +57,11 @@
   <p class="Hierarchy"><a href="../ClipperBase/_Body.htm">ClipperBase</a></p>
 <br>
 
-  <p class="Body"> The <b>Clipper</b> class encapsulates <a href="../../Types/ClipType.htm">boolean operations on polygons</a> (intersection, union, difference and XOR), which is also called <a href="../../../../Overview/_Body.htm#terminology">polygon clipping</a>.<br><br> Input polygons, both <em>subject</em> and <em>clip</em> sets, are passed to a Clipper object by its <a href="../ClipperBase/Methods/AddPolygon.htm">AddPolygon</a> and <a href="../ClipperBase/Methods/AddPolygons.htm">AddPolygons</a> methods, and the clipping operation is performed by calling its <a href="./Methods/Execute.htm">Execute</a> method. Multiple boolean operations can be performed on the same input polygon sets by repeat calls to Execute.<br><br> </p>
+  <p class="Body"> The <b>Clipper</b> class encapsulates <a href="../../Types/ClipType.htm">boolean operations on polygons</a> (intersection, union, difference and XOR), which is also called <a href="../../../../Overview/_Body.htm#terminology">polygon clipping</a>.<br><br> Input polygons, both <em>subject</em> and <em>clip</em> sets, are passed to a Clipper object by its <a href="../ClipperBase/Methods/AddPath.htm">AddPath</a> and <a href="../ClipperBase/Methods/AddPaths.htm">AddPaths</a> methods, and the clipping operation is performed by calling its <a href="./Methods/Execute.htm">Execute</a> method. Multiple boolean operations can be performed on the same input polygon sets by repeat calls to Execute.<br><br> </p>
 
   <h2 id="Auto-Reference">Reference</h2>
   <table>
-    <tr><th>Fields
-      </th><th>Methods
+    <tr><th>Methods
       </th><th>Properties
       </th>
     </tr>
@@ -71,19 +70,27 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td><a href="Methods/Constructor.htm">Constructor</a>
       </td>
+      <td><a href="Properties/PreserveCollinear.htm">PreserveCollinear</a>
+      </td>
+    </tr>
+    <tr>
       <td><a href="Methods/Execute.htm">Execute</a>
       </td>
-      <td><a href="Properties/ForceSimple.htm">ForceSimple</a>
+      <td><a href="Properties/ReverseSolution.htm">ReverseSolution</a>
       </td>
     </tr>
     <tr>
       <td>
       </td>
+      <td><a href="Properties/StrictlySimple.htm">StrictlySimple</a>
+      </td>
+    </tr>
+    <tr>
       <td>
       </td>
-      <td><a href="Properties/ReverseSolution.htm">ReverseSolution</a>
+      <td><a href="Properties/ZFillFunction.htm">ZFillFunction</a>
       </td>
     </tr>
     <tr>
@@ -91,32 +98,24 @@
       </td>
     </tr>
     <tr>
-      <td>
-      </td>
-      <td><a href="../ClipperBase/Methods/AddPolygon.htm">AddPolygon</a>
+      <td><a href="../ClipperBase/Methods/AddPath.htm">AddPath</a>
       </td>
       <td>
       </td>
     </tr>
     <tr>
-      <td>
-      </td>
-      <td><a href="../ClipperBase/Methods/AddPolygons.htm">AddPolygons</a>
+      <td><a href="../ClipperBase/Methods/AddPaths.htm">AddPaths</a>
       </td>
       <td>
       </td>
     </tr>
     <tr>
-      <td>
-      </td>
       <td><a href="../ClipperBase/Methods/Clear.htm">Clear</a>
       </td>
       <td>
       </td>
     </tr>
     <tr>
-      <td>
-      </td>
       <td><a href="../ClipperBase/Methods/GetBounds.htm">GetBounds</a>
       </td>
       <td>
@@ -126,7 +125,7 @@
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../../Types/ClipType.htm">ClipType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 

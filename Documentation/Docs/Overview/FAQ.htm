@@ -58,17 +58,17 @@
 
   <p class="Decl5">How do I use floating point coordinates with Clipper?</p>
 
-  <p class="Decl4">It's a simple task to multiply your floating point coordinates by a scaling factor (that's typically a power of 10 depending on the desired precision). Then with the solution polygons, divide the returned coordinates by this same scaling factor. Clipper accepts integer coordinates as large as &plusmn;4.6e18, so it can accommodate very large scaling factors.<br><br> </p>
+  <p class="Decl4">It's a simple task to multiply your floating point coordinates by a scaling factor (that's typically a power of 10 depending on the desired precision). Then with the solution paths, divide the returned coordinates by this same scaling factor. Clipper accepts integer coordinates as large as &plusmn;4.6e18, so it can accommodate very large scaling.<br><br> </p>
 
 
   <p class="Decl5">Does Clipper handle polygons with holes?</p>
 
-  <p class="Decl4">'Holes' are implied simply by having their orientations opposite that of their container polygons.<br><br> </p>
+  <p class="Decl4">'Holes' are defined using the suppied <a href="../Units/ClipperLib/Types/PolyFillType.htm">polygon filling rule</a>. (See also <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>)<br><br> </p>
 
 
-  <p class="Decl5">Some solution polygons share a common edge. Is this a bug?</p>
+  <p class="Decl5">Some polygons in the solution share a common edge. Is this a bug?</p>
 
-  <p class="Decl4"> No. However Clipper tries very hard to minimize this by merging polygons that share a common edge.<br><br> </p>
+  <p class="Decl4"> No, though this should happen rarely as of version 6. (See <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a> for more about this.)<br><br> </p>
 
 
   <p class="Decl5">I have lots of polygons that I want to 'union'. Can I do this in one operation?</p>
@@ -76,73 +76,27 @@
   <p class="Decl4"> Yes. Just add all the polygons as subject polygons to the Clipper object. (You don't have to assign both subject and clip polygons.)<br><br> </p>
 
 
-  <p class="Decl5"> <img src="../../Images/kangaroo_small.png" width="292" height="292" alt="" align="right"> The <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a> function is returning tiny artefacts? Could this be a bug?</p>
+  <p class="Decl5"> <img src="../../Images/kangaroo_small.png" width="292" height="292" alt="" align="right"> The <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a> function is returning tiny artefacts? Could this be a bug?</p>
 
-  <p class="Decl4"> The precision of the input coordinates may be a problem. The Clipper Library only operates on integer coordinates so if you need better precision than integers, scale the coordinates (eg by a factor of 10) before passing them to the OffsetPolygons function. Then it's a simple matter to reverse the scaling on the output polygons. <br><br> </p>
-
-
-  <p class="Decl5">The <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a> function is returning unexpected results? Could this be a bug?</p>
-
-  <p class="Decl4"> Most likely the <a href="../Units/ClipperLib/Routines/Orientation.htm">orientation</a> of the input polygons is wrong.<br><br> </p>
+  <p class="Decl4"> The precision of the input coordinates may be a problem. Because the Clipper Library only operates on integer coordinates, you may need to scale your coordinates (eg by a factor of 10) to improve precision when passing them to the OffsetPaths function. (Reverse any scaling on the output polygons too.) <br><br> </p>
 
 
   <p class="Decl5">Is there an easy way to reverse polygon orientations?</p>
 
-  <p class="Decl4"> Yes, see <a href="../Units/ClipperLib/Routines/ReversePolygons.htm">ReversePolygons</a>. <br><br> </p>
-
-<div style="clear:both"></div>
-
-
-  <p class="Decl5">Is it possible to get the offset of a line or a polyline?</p>
-
-  <p class="Decl4"> Yes. If it's two vertices forming a single line, just treat this line as if it were a polygon. Polylines however must first be converted into 'flat' polygons. Do this by appending to the polyline a reverse copy of the polyline while avoiding duplicating the end coordinates: c1,c2,...,cn,c(n-1),c(n-2),...,c2. <br><br> 
-    <table cellspacing="0" cellpadding="0" border="1" align="left" style="margin: 0;">
-
-      <tr>
-        <td class="White">
-
-          <pre class="brush: delphi;">
-var
-  pts: TPolygon;
-  ppts: TPolygons;
-begin
-  //define the polyline ...
-  setlength(pts, 5);
-  pts[0] := IntPoint(10,10);
-  pts[1] := IntPoint(100,100);
-  pts[2] := IntPoint(150,100);
-  pts[3] := IntPoint(100,10);
-  pts[4] := IntPoint(10,100);
-
-  //convert the line to a 'flat' polygon ...
-  len := length(pts);
-  setLength(pts, len*2 -2);
-  for i := 1 to len -2 do pts[len-1 +i] := pts[len-1 -i];
-
-  //do the offsetting ...
-  setlength(ppts, 1);
-  ppts[0] := pts;
-  ppts := OffsetPolygons(ppts, 6, jtSquare, 0);
-          </pre>
-
-        </td>
-      </tr>
-
-    </table> <img src="../../Images/polyline_offset.png" width="334" height="224" alt=""> <br><br> </p>
+  <p class="Decl4"> Yes, see <a href="../Units/ClipperLib/Functions/ReversePaths.htm">ReversePaths</a>. <br><br> </p>
 
 <div style="clear:both">&nbsp;</div>
 
 
   <p class="Decl5">My drawings contain lots of ellipses and arcs. How can I perform clipping operations or offsetting on these?</p>
 
-  <p class="Decl4"> You'll have to convert then to polygons. Many graphics libraries have 'flatten path' routines. <br><br> </p>
-
+  <p class="Decl4"> You'll have to convert then to paths. Many graphics libraries have 'flatten path' routines. (See also the Beziers unit that's included in this library. However, there's no documentation on it yet.) <br><br> </p>
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Units/ClipperLib/Routines/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Routines/ReversePolygons.htm">ReversePolygons</a></p>
+  <p class="Body"><a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/ReversePaths.htm">ReversePaths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 

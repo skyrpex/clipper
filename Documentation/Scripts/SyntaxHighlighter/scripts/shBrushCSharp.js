@@ -28,6 +28,8 @@
 						'override params private protected public readonly ref return sbyte sealed set ' +
 						'short sizeof stackalloc static string struct switch this throw true try ' +
 						'typeof uint ulong unchecked unsafe ushort using virtual void while';
+		
+		var clipper = 'Clipper Path Paths IntPoint List PolyType PolyFillType ClipType IntRect';
 
 		function fixComments(match, regexInfo)
 		{
@@ -47,6 +49,9 @@
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },			// strings
 			{ regex: /^\s*#.*/gm,										css: 'preprocessor' },		// preprocessor tags like #region and #endregion
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// c# keyword
+			
+			{ regex: new RegExp(this.getKeywords(clipper), 'gm'), 	css: 'color4'},
+
 			{ regex: /\bpartial(?=\s+(?:class|interface|struct)\b)/g,	css: 'keyword' },			// contextual keyword: 'partial'
 			{ regex: /\byield(?=\s+(?:return|break)\b)/g,				css: 'keyword' }			// contextual keyword: 'yield'
 			];

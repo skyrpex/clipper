@@ -26,7 +26,7 @@
 
   <link rel="stylesheet" href="../../Styles/default.css" type="text/css">
 
-  <meta name="Order" content="Features">
+  <meta name="keywords" content="clipper,clipping,clip,intersection,union,polygon,offset,library,algorithm,line">
 
     
   <script type="text/javascript" src="../../Scripts/bootstrap.js">
@@ -51,7 +51,7 @@
   <h1>Overview</h1>
 
 
-  <p class="Body"> The <a href="../_Body.htm"><b>Clipper Library</b></a> has been designed to perform <b><a href="../Units/ClipperLib/Types/ClipType.htm">boolean operations</a></b> on polygons, and <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm"><b>polygon</b></a> and <a href="../Units/ClipperLib/Routines/OffsetPolyLines.htm"><b>polyline</b></a> <b>offsetting</b>.<br><br> Several features set it apart from other clipping libraries: 
+  <p class="Body"> The <a href="../_Body.htm"><b>Clipper Library</b></a> performs <b><a href="../Units/ClipperLib/Types/ClipType.htm">clipping</a></b>, and <a href="../Units/ClipperLib/Functions/OffsetPaths.htm"><b>offsetting</b></a> of both lines and polygons.<br><br> A number of features set Clipper apart from other clipping libraries: 
     <ul>	
 	  
       <li>it accepts all types of polygons including self-intersecting ones</li>
@@ -60,7 +60,7 @@
     
       <li>it's very fast relative to <a href="http://www.angusj.com/delphi/clipper.php#features" target="_blank">other libraries</a></li>
 	  
-      <li>it can perform polygon and polyline offsetting</li>
+      <li>it also performs line and polygon offsetting</li>
 	  
       <li>it's <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf" target="_blank">numerically robust</a></li>
     
@@ -69,30 +69,36 @@
     </ul> <br> </p>
 
 
-  <p class="Body"> <b>Version:</b><br> 5.1.6<br><br> <b>Author &amp; copyright:</b><br> Angus Johnson. Copyright &copy; 2010-2013<br> License, terms and conditions: <a href="./License.htm">Boost Software License</a><br><br> </p>
+  <p class="Body"> <b>Current Version:</b> 6.0.0<br><br> <b>Author &amp; copyright:</b><br> Angus Johnson. Copyright &copy; 2010-2013<br> License, terms and conditions: <a href="./License.htm">Boost Software License</a><br><br> </p>
 
 
   <p class="Body" id="terminology"> <img src="../../Images/int.png" alt="" border="0" align="right"> <b>Terminology:</b><br> 
     <ul>
   
-      <li><b>Polygon Clipping:</b> This commonly refers to the process of removing from a set of <em>subject</em> polygons, any polygons or parts of polygons that are outside a rectangular '<em>clipping</em>' window. This can be achieved by <em>intersecting</em> the subject polygons with the clipping rectangle. In a more general sense, the clipping window need not be rectangular but can be any type of polygon, even multiple polygons. Also, while clipping typically refers to an <em>intersection</em> operation, in this documentation it will refer to any one of the <a href="../Units/ClipperLib/Types/ClipType.htm">four boolean operations</a> (intersection, union, difference and exclusive-or).</li>
+      <li><b>Clipping:</b> commonly refers to the process of removing (cutting away) from a set of 2-dimensional geometric shapes those parts that are outside a rectangular '<em>clipping</em>' window. This can be achieved by <em>intersecting</em> subject paths (lines and polygons) with the clipping rectangle. In a more general sense, the clipping window need not be rectangular but can be any type of polygon, even multiple polygons. Also, while clipping typically refers to an <em>intersection</em> operation, in this documentation it will refer to any one of the <a href="../Units/ClipperLib/Types/ClipType.htm">four boolean operations</a> (intersection, union, difference and exclusive-or).</li>
 	
-      <li><b>Polygon:</b> A sequence of vertices defining <span class="maroon">a single closed path</span>, irrespective of whether it represents an outer or inner boundary to a brush filling region. <a href="../Units/ClipperLib/Types/Polygon.htm"><b>Polygon</b></a> is also the name of a data structure representing a sequence of vertices (which is usually though not always a closed path).</li>
+      <li><b>Path:</b> is an ordered sequence of vertices defining a single geometric contour that's either a line (an open path) or a polygon (a closed path).</li> 
   
-      <li><b>Contour:</b> Synonymous with polygon.</li>
+      <li><b>Contour:</b> synonymous with path.</li>
+  
+      <li><b>Line:</b> or polyline is an <em>open</em> path containing 2 or more vertices.</li>
+  
+      <li><b>Polygon:</b> in a general sense is a two-dimensional region that's bounded by an outer <em>closed</em> path and containing zero to many 'holes'. However in this documentation polygon refers to a <a href="../Units/ClipperLib/Types/Path.htm">Path</a> that's known to be closed.</li>
 	
-      <li><b>Hole Polygon (hole):</b> Refers to a polygon that's entirely within an <b>outer</b> polygon and defines an inner boundary to brush filling. The specified <a href="../Units/ClipperLib/Types/PolyFillType.htm"><b>filling rule</b></a> determines whether a polygon is a hole or another outer polygon. With <span class="maroon"><em>NonZero</em></span> filling, holes must have reverse <a href="../Units/ClipperLib/Routines/Orientation.htm"><b>orientations</b></a> to outers. With <span class="maroon"><em>Even-Odd</em></span> filling, holes are determined simply by their locations relative to other polygons such that outers contain holes and holes contain outers. This term is generally used in contexts where polygons do not intersect (eg in solutions to clipping operations).</li>
+      <li><b>Hole:</b> is a closed region within a polygon that's not part of the polygon. A polygon that forms the outer boundaries of a hole is called a hole polygon.</li>
+   
+      <li><b>Polygon Filling Rule:</b> together with a list of paths, the <a href="../Units/ClipperLib/Types/PolyFillType.htm"><b>filling rule</b></a> defines those regions bounded by paths that are <em>inside</em> polygons (ie 'filled' in a graphical display) and those which are <em>outside</em>.</li>
 
     </ul><br> </p>
 
 
-  <p class="Body"> <b>Distribution package contents:</b><br><br> The ZIP package contains the Clipper library's source code, a Windows CHM help file, HTML help, and a number of compiled demo applications (with full source code). The library was initially written in <strong>Delphi Pascal</strong> (and compiles with Delphi version 7 or above) but now contains <strong>C++</strong>, <strong>C#</strong> and <strong>Python</strong> translations too. The library's source code in each language is a little under 4000 lines. The Delphi code contains reasonably extensive comments, but comments are fewer in the C++ and C# code. The included sample applications show how Clipper can be used with the different languages using a number of graphics display libraries including - <b>AGG, Cairo, OpenGL, Graphics32, GDI+</b> and <b>SVG</b>.<br><br> <b>Download Link:</b><br><br> <a href="http://sourceforge.net/projects/polyclipping">SourceForge</a><br><br> <b>References:</b><br><br> The Library is based on but significantly extends Bala Vatti's polygon clipping algorithm as described in <a href="http://portal.acm.org/citation.cfm?id=129906" target="_blank">"A generic solution to polygon clipping"</a>, Communications of the ACM, Vol 35, Issue 7 (July 1992) pp 56-63.<br><br> A section in <a href="http://books.google.com/books?q=vatti+clipping+agoston" target="_blank">"Computer graphics and geometric modeling: implementation and algorithms"</a> by By Max K. Agoston (Springer, 2005) discussing <em>Vatti Polygon Clipping</em> was also helpful in creating the initial Clipper implementation.<br><br> The paper titled <a href="http://www.me.berkeley.edu/~mcmains/pubs/DAC05OffsetPolygon.pdf">"Polygon Offsetting by Computing Winding Numbers"</a> by Chen & McMains (Paper no. DETC2005-85513, ASME 2005. Pages 565-575) contains helpful discussion on the complexities of polygon offsetting together with some solutions.<br><br>  </p>
+  <p class="Body"> <b>Distribution package contents:</b><br><br> The ZIP package contains the Clipper library's source code, a Windows CHM help file, HTML help, and a number of compiled demo applications (with full source code). The library was initially written in <strong>Delphi Pascal</strong> (and compiles with Delphi version 7 or above) but now contains <strong>C++</strong>, <strong>C#</strong> and <strong>Python</strong> translations too. The library's source code in each language is about 5000 lines. The Delphi code contains reasonably extensive comments, but comments are fewer in the C++ and C# code. The included sample applications show how Clipper can be used with the different languages using a number of graphics display libraries including - <b>AGG, Cairo, OpenGL, Graphics32, GDI+</b> and <b>SVG</b>.<br><br> <b>Download Link:</b><br><br> <a href="http://sourceforge.net/projects/polyclipping">SourceForge</a><br><br> <b>References:</b><br><br> The Library is based on but significantly extends Bala Vatti's polygon clipping algorithm as described in <a href="http://portal.acm.org/citation.cfm?id=129906" target="_blank">"A generic solution to polygon clipping"</a>, Communications of the ACM, Vol 35, Issue 7 (July 1992) pp 56-63.<br><br> A section in <a href="http://books.google.com/books?q=vatti+clipping+agoston" target="_blank">"Computer graphics and geometric modeling: implementation and algorithms"</a> by By Max K. Agoston (Springer, 2005) discussing <em>Vatti Polygon Clipping</em> was also helpful in creating the initial Clipper implementation.<br><br> The paper titled <a href="http://www.me.berkeley.edu/~mcmains/pubs/DAC05OffsetPolygon.pdf">"Polygon Offsetting by Computing Winding Numbers"</a> by Chen & McMains (Paper no. DETC2005-85513, ASME 2005. Pages 565-575) contains helpful discussion on the complexities of polygon offsetting together with some solutions.<br><br>  </p>
       
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../_Body.htm">Source</a>, <a href="License.htm">License</a>, <a href="../Units/ClipperLib/Classes/Clipper/_Body.htm">Clipper</a>, <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Units/ClipperLib/Routines/OffsetPolyLines.htm">OffsetPolyLines</a>, <a href="../Units/ClipperLib/Routines/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Types/ClipType.htm">ClipType</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a>, <a href="../Units/ClipperLib/Types/Polygon.htm">Polygon</a></p>
+  <p class="Body"><a href="../_Body.htm">Source</a>, <a href="License.htm">License</a>, <a href="../Units/ClipperLib/Classes/Clipper/_Body.htm">Clipper</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Types/ClipType.htm">ClipType</a>, <a href="../Units/ClipperLib/Types/Path.htm">Path</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 5.1.6 &nbsp; - &nbsp; Help file built on 24-May-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
   
 </body>
 
