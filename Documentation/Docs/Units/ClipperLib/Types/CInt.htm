@@ -58,12 +58,12 @@
   <p class="Decl3">C#&nbsp;&nbsp;&raquo;<br> #if use_int32<br> &nbsp;&nbsp;using cInt = Int32;<br> #else<br> &nbsp;&nbsp;using cInt = Int64;<br> #endif </p>
 
 
-  <p class="Body"> <b>cInt</b> is the integer type used by the Clipper Library.<br><br> If the preprocessor directive <a href="../PreProcessor/Defines.htm"><b>use_int32</b></a> has been defined (it is left undefined by default), cInt will represent a signed 32bit integer, otherwise it will represent a signed 64bit integer. Clipping performance can be improved by 20-30% when <em>use_int32</em> is enabled but the trade-off is that coordinate values are restricted to a much narrower range (&plusmn; 46340). </p>
+  <p class="Body"> <b>cInt</b> is the integer type used by the Clipper Library to represent vertex coordinate values. (See also <a href="./IntPoint.htm">IntPoint</a>.)<br><br> The library uses integers instead of floating point values to preserve <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf" target="_blank">numerical robustness</a>. (Very early versions of the library used floating point coordinates, but it became apparent that floating point imprecision was always going to cause occasional errors.)<br><br> By default <b>cInt</b> represents a signed 64bit integer and polygon coordinates can have any value in the range &plusmn; 9.2e+18. This accommodates the scaling of floating point coordinate values to very large integers so that very high degrees of precision can be retained during clipping. However, if coordinate values can be kept within the range &plusmn; 3.0e+9, then by avoiding large integer math, a modest ~10% improvement in clipping performance is achieved.<br><br> If the preprocessor directive <a href="../PreProcessor/Defines.htm"><b>use_int32</b></a> is defined, cInt will represent a signed 32bit integer. This improves clipping performance by 20-30% but the trade-off is that coordinate values are restricted to the much narrower range of &plusmn; 46340. </p>
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../PreProcessor/Defines.htm">Defines</a></p>
+  <p class="Body"><a href="../PreProcessor/Defines.htm">Defines</a>, <a href="IntPoint.htm">IntPoint</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

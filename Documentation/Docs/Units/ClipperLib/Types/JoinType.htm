@@ -50,33 +50,28 @@
   </table>
   <h1>JoinType</h1>
 
-
   <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TJoinType = (jtSquare, jtRound, jtMiter);</p>
 
-  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>enum </b>JoinType { jtSquare, jtRound, jtMiter };</p>
+  <p class="Decl2"><span class="Comment"> C++&nbsp;&raquo;</span> <b>enum</b> JoinType {jtSquare, jtRound, jtMiter};</p>
 
-  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public enum</b> JoinType { jtSquare, jtRound, jtMiter };</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public enum</b> JoinType {jtSquare, jtRound, jtMiter};</p>
 <br>
 
-
-  <p class="Body"> The <a href="../Functions/OffsetPaths.htm">OffsetPaths</a> function has a JoinType parameter that accepts one of three join types: 
+  <p class="Body"> When adding paths to a <a href="../Classes/ClipperOffset/_Body.htm">ClipperOffset</a> object via the <a href="../Classes/ClipperOffset/Methods/AddPaths.htm">AddPaths</a> method, the joinType parameter may be one of three types - jtMiter, jtSquare or jtRound.<br><br> <img src="../../../../Images/jointypes.png" alt="" border="0"><br><br> 
     <ul>
 	
-      <li><b>jtSquare:</b> Convex edge joins are <em>squared</em> off at exactly <b>delta</b> units</li>
+      <li>jtMiter: There's a necessary limit to mitered joins since offsetting edges that join at very acute angles will produce excessively long and narrow 'spikes'. To contain these potential spikes, the ClippOffset object's <a href="../Classes/ClipperOffset/Properties/MiterLimit.htm"><b>MiterLimit</b></a> property specifies a maximum distance that vertices will be offset <em>(in multiples of delta)</em>. For any given edge join, when miter offsetting would exceed that maximum distance, 'square' joining is applied.<br></li>
 	
-      <li><b>jtRound:</b> Convex edge joins are <em>rounded</em> off at exactly <b>delta</b> units</li>
+      <li>jtRound: While flattened paths can never perfectly trace an arc, they are approximated by a series of arc chords (see ClipperObject's <a href="../Classes/ClipperOffset/Properties/ArcTolerance.htm"><b>ArcTolerance</b></a> property).<br></li>
 	
-      <li><b>jtMiter:</b> Convex edge joins are squared off only when a new vertex would exceed <b>limit * delta</b> distance from the initial vertex location.</li>
+      <li>jtSquare: Squaring is applied uniformally at all convex edge joins at 1 &times; delta.</li>
 
     </ul> </p>
 
-  <p class="Body"> <img src="../../../../Images/jointypes.png" alt="" border="0">&nbsp;&nbsp; </p>
-
-
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Functions/OffsetPaths.htm">OffsetPaths</a></p>
+  <p class="Body"><a href="../Classes/ClipperOffset/_Body.htm">ClipperOffset</a>, <a href="../Classes/ClipperOffset/Methods/AddPaths.htm">ClipperOffset.AddPaths</a>, <a href="../Classes/ClipperOffset/Properties/ArcTolerance.htm">ClipperOffset.ArcTolerance</a>, <a href="../Classes/ClipperOffset/Properties/MiterLimit.htm">ClipperOffset.MiterLimit</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

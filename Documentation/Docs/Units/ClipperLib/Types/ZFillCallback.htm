@@ -51,11 +51,11 @@
   <h1>ZFillCallback</h1>
 
 
-  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TZFillCallback = <b>procedure</b> (<b>const</b> Z1, Z2: cInt; <b>var</b> Pt: TIntPoint);</p>
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TZFillCallback = <b>procedure</b> (<b>const</b> Z1, Z2: TIntPoint; <b>var</b> Pt: TIntPoint);</p>
 
-  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef void</b> (*TZFillCallback)(cInt z1, cInt z2, IntPoint& pt);</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef void</b> (*TZFillCallback)(const IntPoint& z1, const IntPoint& z2, IntPoint& pt);</p>
 
-  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public delegate void</b> TZFillCallback(cInt Z1, cInt Z2, <b>ref</b> IntPoint pt);</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public delegate void</b> TZFillCallback(IntPoint Z1, IntPoint Z2, <b>ref</b> IntPoint pt);</p>
 <br>
 
   <p class="Body"> </p>
@@ -64,7 +64,7 @@
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

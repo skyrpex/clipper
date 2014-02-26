@@ -115,6 +115,130 @@
 
   <ul class="barebones expandable">
 
+
+    <!--   <li>
+    <h2>v6.1.X (XX December 2013)</h2><br>
+    <ul>
+      <li>
+        <h2>Bugfix:</h2>
+        <ul class="dots">
+        xxxxxxxxxxxxxxxxxxxxxxxxxxx
+        </ul>
+      </li>
+    </ul>
+  </li>
+ -->
+ 
+  
+    <li> 
+      <h2>v6.1.3 (18 January 2014)</h2><br> 
+      <ul>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+        Fixed potential endless loop condition when adding open paths to Clipper.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+        Fixed missing implementation of <a href="../Units/ClipperLib/Functions/SimplifyPolygon.htm"><b>SimplifyPolygon</b></a> function in C++ code.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+        Fixed incorrect upper range constant for polygon coordinates in Delphi code.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Added:</h2> 
+          <ul class="dots">
+        Added <a href="../Units/ClipperLib/Functions/PointInPolygon.htm"><b>PointInPolygon</b></a> function.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Added:</h2> 
+          <ul class="dots">
+        Overloaded <a href="../Units/ClipperLib/Functions/MinkowskiSum.htm"><b>MinkowskiSum</b></a> function to accommodate multi-contour paths.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+        Documentation updated.
+        
+          </ul> </li>
+    
+      </ul> </li>
+ 
+  
+    <li> 
+      <h2>v6.1.2 (15 December 2013)</h2><br> 
+      <ul>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+Fixed broken C++ header file.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+Minor improvement to joining polygons.
+        
+          </ul> </li>
+    
+      </ul> </li>
+
+  
+    <li> 
+      <h2>v6.1.1 (13 December 2013)</h2><br> 
+      <ul>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+Fixed a couple of bugs affecting open paths that could raise unhandled exceptions.
+        
+          </ul> </li>
+    
+      </ul> </li>
+
+  
+    <li> 
+      <h2>v6.1.0 (2 December 2013)</h2><br> 
+      <ul>
+      
+        <li> 
+          <h2>Deleted:</h2> 
+          <ul class="dots">Previously deprecated code has been removed.
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+The <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a> function is now deprecated as it has been replaced by the <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm"><b>ClipperOffset</b></a> class which is much more flexible.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+Several minor bugs have been fixed including occasionally an incorrect nesting within the PolyTree structure.
+        
+          </ul> </li>
+    
+      </ul> </li>
+
   
     <li> 
       <h2>v6.0.0 (30 October 2013)</h2><br> 
@@ -239,7 +363,7 @@ The <a href="../Units/ClipperLib/Classes/Clipper/Methods/Constructor.htm">Clippe
       <ul>
       
         <li> 
-          <h2>Bugfixes:</h2> 
+          <h2>Bugfix:</h2> 
           <ul class="dots">
 Numerous minor bugs have been fixed.
         
@@ -285,7 +409,7 @@ ver 6.)
         <li> 
           <h2>Changed:</h2> 
           <ul class="dots">
-The behaviour of the 'miter' <a href="../Units/ClipperLib/Types/JoinType.htm">JoinType</a> has
+The behaviour of the 'miter' JoinType has
 been changed so that when squaring occurs, it's no longer extended up
 to the miter limit but is squared off at exactly 'delta' units. (This
 improves the look of mitering with larger limits at acute angles.)
@@ -1065,9 +1189,9 @@ C++ translation of Delphi code
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="Deprecated.htm">Deprecated</a>, <a href="Rounding.htm">Rounding</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Constructor.htm">Clipper.Constructor</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPath.htm">ClipperBase.AddPath</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPaths.htm">ClipperBase.AddPaths</a>, <a href="../Units/ClipperLib/Classes/PolyNode/_Body.htm">PolyNode</a>, <a href="../Units/ClipperLib/Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Units/ClipperLib/Functions/Area.htm">Area</a>, <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a>, <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a>, <a href="../Units/ClipperLib/Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/MinkowskiDiff.htm">MinkowskiDiff</a>, <a href="../Units/ClipperLib/Functions/MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Functions/PolyTreeToPaths.htm">PolyTreeToPaths</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygon.htm">SimplifyPolygon</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygons.htm">SimplifyPolygons</a>, <a href="../Units/ClipperLib/PreProcessor/Defines.htm">Defines</a>, <a href="../Units/ClipperLib/Types/CInt.htm">CInt</a>, <a href="../Units/ClipperLib/Types/InitOptions.htm">InitOptions</a>, <a href="../Units/ClipperLib/Types/IntPoint.htm">IntPoint</a>, <a href="../Units/ClipperLib/Types/JoinType.htm">JoinType</a>, <a href="../Units/ClipperLib/Types/Path.htm">Path</a>, <a href="../Units/ClipperLib/Types/Paths.htm">Paths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
+  <p class="Body"><a href="Deprecated.htm">Deprecated</a>, <a href="Rounding.htm">Rounding</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Constructor.htm">Clipper.Constructor</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPath.htm">ClipperBase.AddPath</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPaths.htm">ClipperBase.AddPaths</a>, <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm">ClipperOffset</a>, <a href="../Units/ClipperLib/Classes/PolyNode/_Body.htm">PolyNode</a>, <a href="../Units/ClipperLib/Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Units/ClipperLib/Functions/Area.htm">Area</a>, <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a>, <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a>, <a href="../Units/ClipperLib/Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/MinkowskiDiff.htm">MinkowskiDiff</a>, <a href="../Units/ClipperLib/Functions/MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Functions/PointInPolygon.htm">PointInPolygon</a>, <a href="../Units/ClipperLib/Functions/PolyTreeToPaths.htm">PolyTreeToPaths</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygon.htm">SimplifyPolygon</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygons.htm">SimplifyPolygons</a>, <a href="../Units/ClipperLib/PreProcessor/Defines.htm">Defines</a>, <a href="../Units/ClipperLib/Types/CInt.htm">CInt</a>, <a href="../Units/ClipperLib/Types/InitOptions.htm">InitOptions</a>, <a href="../Units/ClipperLib/Types/IntPoint.htm">IntPoint</a>, <a href="../Units/ClipperLib/Types/Path.htm">Path</a>, <a href="../Units/ClipperLib/Types/Paths.htm">Paths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

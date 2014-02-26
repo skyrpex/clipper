@@ -57,7 +57,7 @@
   <p class="Hierarchy"><a href="../PolyNode/_Body.htm">PolyNode</a></p>
 <br>
 
-  <p class="Body"> <b>PolyTree</b> is intended as a <b>read-only</b> data structure that should only be used to receive <em>solutions</em> from polygon clipping operations. It's an alternative data structure the <a href="../../Types/Paths.htm">Paths</a> structure which can also receive clipping solutions. Its major advantages over the <em>Paths</em> structure is that it properly represents the <b>parent-child relationships</b> of the returned polygons, and that it also differentiates between <b>open</b> and <b>closed</b> paths. However, since a PolyTree is more complex than a <em>Paths</em> structure, and because it's more computationally expensive to process (the Execute method being roughly 5-10% slower), <span class="maroon">it should only be used when parent-child polygon relationships are needed, or when open paths are being 'clipped'.</span><br><br> An empty PolyTree object can be passed as the <em>solution</em> parameter to a <a href="../Clipper/_Body.htm">Clipper</a> object's <a href="../Clipper/Methods/Execute.htm"><b>Execute</b></a> method. Once the clipping operation is completed, this method returns with the PolyTree structure filled with data representing the solution.<br><br> A <b>PolyTree</b> object is a container for any number of <a href="../PolyNode/_Body.htm"><b>PolyNode</b></a> children, with each contained PolyNode representing a single polygon contour (either an <a href="../../../../Overview/_Body.htm#terminology">outer</a> or <a href="../../../../Overview/_Body.htm#terminology">hole</a> polygon). <span class="maroon">PolyTree itself is a specialized PolyNode whose immediate children represent the top-level <em>outer</em> polygons of the solution. (Its own <a href="../PolyNode/Properties/Contour.htm">Contour</a> property is always empty.)</span> The contained top-level PolyNodes may contain their own PolyNode children representing hole polygons that may also contain children representing nested outer polygons etc. Children of <em>outers</em> will always be <em>holes</em>, and children of <em>holes</em> will always be <em>outers</em>.<br><br> <b>PolyTrees</b> can also contain <b>open</b> paths. Open paths will always be represented by <em>top level</em> PolyNodes. Two functions are provided to quickly separate out <em>open</em> and <em>closed</em> paths from a polytree - <a href="../../Functions/OpenPathsFromPolyTree.htm"><b>OpenPathsFromPolyTree</b></a> and <a href="../../Functions/ClosedPathsFromPolyTree.htm"><b>ClosedPathsFromPolyTree</b></a>. <br><br> <div align="left"> 
+  <p class="Body"> <b>PolyTree</b> is intended as a <b>read-only</b> data structure that should only be used to receive <em>solutions</em> from clipping and offsetting operations. It's an alternative to the <a href="../../Types/Paths.htm">Paths</a> data structure which also receives these solutions. PolyTree's two major advantages over the <em>Paths</em> structure are: it properly represents the <b>parent-child relationships</b> of the returned polygons; it differentiates between <b>open</b> and <b>closed</b> paths. However, since PolyTree is a more complex structure than the <em>Paths</em> structure, and since it's more computationally expensive to process (the Execute method being roughly 5-10% slower), <span class="maroon">it should used only be when parent-child polygon relationships are needed, or when open paths are being 'clipped'.</span><br><br> An empty PolyTree object can be passed as the <em>solution</em> parameter in <a href="../Clipper/Methods/Execute.htm"><b>Clipper.Execute</b></a> and in <a href="../ClipperOffset/Methods/Execute.htm"><b>ClipperOffset.Execute</b></a>. Once the clipping or offseting operation is completed, the method returns with the PolyTree structure filled with data representing the solution.<br><br> A <b>PolyTree</b> object is a container for any number of <a href="../PolyNode/_Body.htm"><b>PolyNode</b></a> children, with each contained PolyNode representing a single polygon contour (either an <a href="../../../../Overview/_Body.htm#terminology">outer</a> or <a href="../../../../Overview/_Body.htm#terminology">hole</a> polygon). <span class="maroon">PolyTree itself is a specialized PolyNode whose immediate children represent the top-level <em>outer</em> polygons of the solution. (Its own <a href="../PolyNode/Properties/Contour.htm">Contour</a> property is always empty.)</span> The contained top-level PolyNodes may contain their own PolyNode children representing hole polygons that may also contain children representing nested outer polygons etc. Children of <em>outers</em> will always be <em>holes</em>, and children of <em>holes</em> will always be <em>outers</em>.<br><br> <b>PolyTrees</b> can also contain <b>open</b> paths. Open paths will always be represented by <em>top level</em> PolyNodes. Two functions are provided to quickly separate out <em>open</em> and <em>closed</em> paths from a polytree - <a href="../../Functions/OpenPathsFromPolyTree.htm"><b>OpenPathsFromPolyTree</b></a> and <a href="../../Functions/ClosedPathsFromPolyTree.htm"><b>ClosedPathsFromPolyTree</b></a>. <br><br> <div align="left"> 
       <table cellspacing="2" cellpadding="0" border="0">
 
         <tr>
@@ -101,7 +101,8 @@
 
   <h2 id="Auto-Reference">Reference</h2>
   <table>
-    <tr><th>Methods
+    <tr><th>Fields
+      </th><th>Methods
       </th><th>Properties
       </th>
     </tr>
@@ -110,12 +111,16 @@
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="Methods/Clear.htm">Clear</a>
       </td>
       <td><a href="Properties/Total.htm">Total</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="Methods/GetFirst.htm">GetFirst</a>
       </td>
       <td>
@@ -126,6 +131,8 @@
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td><a href="../PolyNode/Methods/GetNext.htm">GetNext</a>
       </td>
       <td><a href="../PolyNode/Properties/ChildCount.htm">ChildCount</a>
@@ -134,10 +141,14 @@
     <tr>
       <td>
       </td>
+      <td>
+      </td>
       <td><a href="../PolyNode/Properties/Childs.htm">Childs</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td>
       </td>
       <td><a href="../PolyNode/Properties/Contour.htm">Contour</a>
@@ -146,10 +157,14 @@
     <tr>
       <td>
       </td>
+      <td>
+      </td>
       <td><a href="../PolyNode/Properties/IsHole.htm">IsHole</a>
       </td>
     </tr>
     <tr>
+      <td>
+      </td>
       <td>
       </td>
       <td><a href="../PolyNode/Properties/IsOpen.htm">IsOpen</a>
@@ -158,14 +173,16 @@
     <tr>
       <td>
       </td>
+      <td>
+      </td>
       <td><a href="../PolyNode/Properties/Parent.htm">Parent</a>
       </td>
     </tr>
   </table>
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../Clipper/_Body.htm">Clipper</a>, <a href="../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../PolyNode/_Body.htm">PolyNode</a>, <a href="../../Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../../Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../../Types/Paths.htm">Paths</a></p>
+  <p class="Body"><a href="../../../../Overview/_Body.htm">Overview</a>, <a href="../Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../ClipperOffset/Methods/Execute.htm">ClipperOffset.Execute</a>, <a href="../PolyNode/_Body.htm">PolyNode</a>, <a href="../../Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../../Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../../Types/Paths.htm">Paths</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

@@ -60,10 +60,14 @@
   <p class="Decl3"><span class="Comment"> C#&nbsp;&nbsp;&raquo;</span> <b>public</b> bool PreserveCollinear { get {} set {} };</p>
 
 
-  <p class="Body"> <br> Prevents the removal of 'inner' vertices when three or more vertices are collinear in solution paths. </p>
+  <p class="Body"> <br> By default, when three or more vertices are collinear in input polygons (subject or clip), the Clipper object removes the 'inner' vertices before clipping. When enabled the PreserveCollinear property prevents this default behavior to allow these inner vertices to appear in the solution. </p>
 
+
+
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="../Methods/Constructor.htm">Constructor</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

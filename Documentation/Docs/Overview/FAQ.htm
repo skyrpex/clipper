@@ -63,7 +63,7 @@
 
   <p class="Decl5">Does Clipper handle polygons with holes?</p>
 
-  <p class="Decl4">'Holes' are defined using the suppied <a href="../Units/ClipperLib/Types/PolyFillType.htm">polygon filling rule</a>. (See also <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>)<br><br> </p>
+  <p class="Decl4">'Holes' are defined by the specified <a href="../Units/ClipperLib/Types/PolyFillType.htm">polygon filling rule</a>. (See also <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>)<br><br> </p>
 
 
   <p class="Decl5">Some polygons in the solution share a common edge. Is this a bug?</p>
@@ -76,9 +76,9 @@
   <p class="Decl4"> Yes. Just add all the polygons as subject polygons to the Clipper object. (You don't have to assign both subject and clip polygons.)<br><br> </p>
 
 
-  <p class="Decl5"> <img src="../../Images/kangaroo_small.png" width="292" height="292" alt="" align="right"> The <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a> function is returning tiny artefacts? Could this be a bug?</p>
+  <p class="Decl5"> <img src="../../Images/kangaroo_small.png" width="292" height="292" alt="" align="right"> The polygons produced by <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm">ClipperOffset</a> have tiny artefacts? Could this be a bug?</p>
 
-  <p class="Decl4"> The precision of the input coordinates may be a problem. Because the Clipper Library only operates on integer coordinates, you may need to scale your coordinates (eg by a factor of 10) to improve precision when passing them to the OffsetPaths function. (Reverse any scaling on the output polygons too.) <br><br> </p>
+  <p class="Decl4"> Make sure the input polygons don't self-intersect. Tiny self-intersections can sometimes be produced by previous clipping operations. These can be cleaned up using the <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a> and <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a> functions. Also, make sure the supplied polygons don't overlap. If they do, offset these separately. Finally, the precision of the input coordinates may be a problem. Because the Clipper Library only operates on integer coordinates, you may need to scale your coordinates (eg by a factor of 10) to improve precision. <br><br> </p>
 
 
   <p class="Decl5">Is there an easy way to reverse polygon orientations?</p>
@@ -88,15 +88,15 @@
 <div style="clear:both">&nbsp;</div>
 
 
-  <p class="Decl5">My drawings contain lots of ellipses and arcs. How can I perform clipping operations or offsetting on these?</p>
+  <p class="Decl5">My drawings contain lots of beziers, ellipses and arcs. How can I perform clipping operations on these?</p>
 
-  <p class="Decl4"> You'll have to convert then to paths. Many graphics libraries have 'flatten path' routines. (See also the Beziers unit that's included in this library. However, there's no documentation on it yet.) <br><br> </p>
+  <p class="Decl4"> You'll have to convert them to 'flattened' paths. For an example of how this can be done (and even reconstructed back into beziers, arcs etc), see the CurvesDemo application included in this library. <br><br> </p>
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/ReversePaths.htm">ReversePaths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
+  <p class="Body"><a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm">ClipperOffset</a>, <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a>, <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a>, <a href="../Units/ClipperLib/Functions/ReversePaths.htm">ReversePaths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

@@ -58,31 +58,12 @@
   <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public static</b> Paths OffsetPaths(Paths polys, <b>double</b> delta, JoinType jointype = JoinType.jtSquare, EndType endtype = EndType.etClosed, <b>double</b> limit = 0.0);</p>
 <br>
 
-
-  <p class="Body">This function offsets the 'polys' parameter by the 'delta' amount. 'polys' may be open or closed paths. With closed paths (polygons), positive delta values 'expand' outer contours and 'shrink' inner 'hole' contours. Negative deltas do the reverse. With open paths (lines), the sign of the delta value is ignored since it's not possible to 'shrink' open paths.<br><br> (C++ only: The <em>in_polys</em> and <em>out_polys</em> parameters can reference the same object.) <br><br> </p>
-
-
-  <p class="Body">Edge joins may be one of three <a href="../Types/JoinType.htm">jointypes</a> - jtMiter, jtSquare or jtRound. (See the image below for examples.)<br><br> <img src="../../../../Images/jointypes.png" alt="" border="0"><br><br> <img src="../../../../Images/kangaroo_small.png" alt="" border="0" align="right"> The meaning and use of the <b>limit</b> parameter depends on jointype: 
-    <ul>
-	
-      <li>jtMiter: <i>limit</i> sets the maximum distance <em>in multiples of delta</em> that vertices can be offset from their original positions before squaring is applied. <b>The default value is 2</b> (ie twice delta) which is also the smallest allowed value. If the angle is acute enough to require squaring, then squaring will occur at 1 times delta. If offsetting was allowed without any limits (ie without squaring), then offsetting at very acute angles would produce unacceptably long 'spikes'.</li>
-	
-      <li>jtRound: <i>limit</i> sets the maximum distance that rounded joins can deviate from their true arcs (since it would require an infinite number of vertices to perfectly represent an arc). <b>The default limit is 0.25 units</b> though realistically precision can never be better than 0.5 since arc coordinates will still be rounded to integer values. When offsetting polygons with very large coordinate values (typically as a result of scaling), it's advisable to increase <em>limit</em> to maintain consistent precisions at all joins because the maximum number of vertices allowed in any arc is 222. (This hard coded upper limit has been chosen because the imprecision in a circle constructed with 222 vertices will be only 1/10000th its radius and, not only is creating very large numbers of arc vertices computationally expensive, it can cause out-of-memory problems.)</li>
-	
-      <li>jtSquare: The <i>limit</i> parameter is ignored since squaring will be applied uniformally at 1 times delta.</li>
-
-    </ul> </p>
-
-<br>
-
-  <p class="Body"> Self-intersections in <em>closed</em> paths must be removed before the paths are passed to OffsetPaths.<br><br> </p>
-
-
+  <p class="Body"> <b>Deprecated.</b> (See <a href="../Classes/ClipperOffset/_Body.htm">ClipperOffset</a>.)<br><br> </p>
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Types/JoinType.htm">JoinType</a>, <a href="../Types/Path.htm">Path</a></p>
+  <p class="Body"><a href="../Classes/ClipperOffset/_Body.htm">ClipperOffset</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

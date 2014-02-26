@@ -71,17 +71,17 @@
 
     </ul> </p>
 
-  <p class="Body"> Vertices 'touch' if they share the same coordinates (and are not adjacent). An edge touches another if one of its end vertices touches another edge excluding its adjacent edges, or if they are co-linear and overlapping (including adjacent edges).<br><br> Polygons returned by clipping operations (see <a href="../Methods/Execute.htm">Clipper.Execute()</a>) should always be simple polygons. When the <b>StrictlySimply</b> property is enabled, polygons returned will be <em>strictly simple</em>, otherwise they may be <em>weakly simple</em>. It's <b>computationally expensive</b> ensuring polygons are <em>strictly simple</em> and so this property is disabled by default.<br><br> <img src="../../../../../../Images/simplify2.png" alt="" border="0"> <img src="../../../../../../Images/simplify3.png" alt="" border="0"><br> </p>
+  <p class="Body"> Vertices 'touch' if they share the same coordinates (and are not adjacent). An edge touches another if one of its end vertices touches another edge excluding its adjacent edges, or if they are co-linear and overlapping (including adjacent edges).<br><br> Polygons returned by clipping operations (see <a href="../Methods/Execute.htm">Clipper.Execute()</a>) should always be simple polygons. When the <b>StrictlySimply</b> property is enabled, polygons returned will be <em>strictly simple</em>, otherwise they may be <em>weakly simple</em>. It's <b>computationally expensive</b> ensuring polygons are <em>strictly simple</em> and so this property is disabled by default.<br><br> <em>Note: There's currently no guarantee that polygons will be strictly simple since 'simplifying' is still a work in progress.</em><br><br> <img src="../../../../../../Images/simplify2.png" alt="" border="0"> <img src="../../../../../../Images/simplify3.png" alt="" border="0"><br> </p>
 
 
-  <p class="Body"> In the image above, the two examples show weakly simple polygons being broken into two strictly simple polygons. (The outlines with arrows are intended to aid visualizing vertex order.)<br><br> See also the article on <a href="http://en.wikipedia.org/wiki/Simple_polygon" target="_blank">Simple Polygon</a> on Wikipedia. </p>
+  <p class="Body"> In the image above, the two examples show weakly simple polygons being broken into two strictly simple polygons. (The outlines with arrows are intended to aid visualizing vertex order.)<br><br> See also the article on <a href="http://en.wikipedia.org/wiki/Simple_polygon" target="_blank">Simple Polygons</a> on Wikipedia. </p>
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../Methods/Execute.htm">Execute</a>, <a href="../../../Functions/SimplifyPolygons.htm">SimplifyPolygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

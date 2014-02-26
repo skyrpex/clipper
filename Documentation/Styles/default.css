@@ -210,16 +210,32 @@ a.Bold {
   font-weight: bold;
 }
 
-li {  
-  list-style-position: outside; 
+ul li {  
+  list-style-position: inside; 
   list-style-type: square;
-  margin-top: 3pt; margin-bottom: 3pt;
-  margin-left: 12pt;
+  margin-top: 3pt; 
+  margin-bottom: 3pt;
+}
+
+ol li {  
+  list-style-position: outside; 
+  list-style-type: decimal;
+  margin-top: 3pt; 
+  margin-bottom: 3pt;
+  margin-left: 0.7cm;
+  padding-left: 2pt;
 }
 
 ul {
+  margin-left: 1cm;
   margin-top: 8pt;
-  margin-bottom : 8pt;
+  margin-bottom: 8pt;
+}
+
+ol {
+  margin-left: 1cm;
+  margin-top: 8pt;
+  margin-bottom: 8pt;
 }
 
 .Comment {  
@@ -280,3 +296,9 @@ p.Copyright {font-size: 7pt; color: #808090; text-align: center; font-family: Ta
 #mainmenu  { position: static }
 
 .maroon {color: #990000;}
+
+.gray { color: #C0C0C0;}
+
+sup {
+	vertical-align: top; font-size: 0.75em;
+}

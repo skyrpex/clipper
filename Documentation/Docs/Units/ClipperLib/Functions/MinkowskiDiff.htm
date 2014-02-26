@@ -51,23 +51,23 @@
   <h1>MinkowskiDiff</h1>
 
 
-  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>function</b> MinkowskiDiff(<b>const</b> Poly: TPath; <b>const</b> Path: TPath; IsClosed: Boolean): TPaths;</p>
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>function</b> MinkowskiDiff(<b>const</b> Poly1: TPath; <b>const</b> Poly2: TPath): TPaths;</p>
 
-  <p class="Decl2"><span class="Comment"> C++&nbsp;&raquo;</span> <b>void</b> MinkowskiDiff(<b>const</b> Path& poly, <b>const</b> Path& path, Paths& solution, <b>bool</b> isClosed);</p>
+  <p class="Decl2"><span class="Comment"> C++&nbsp;&raquo;</span> <b>void</b> MinkowskiDiff(<b>const</b> Path& poly1, <b>const</b> Path& poly2, Paths& solution);</p>
 
-  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public static</b> <a href="../Types/Paths.htm">Paths</a> MinkowskiDiff(<a href="../Types/Path.htm">Path</a> poly, <a href="../Types/Path.htm">Path</a> path, <b>bool</b> isClosed);</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public static</b> Paths MinkowskiDiff(Path poly1, Path poly2);</p>
 <br>
 
 
-  <p class="Body"> <img src="../../../../Images/minkowski2.png" alt="" border="0" align="right"> <b>Minkowski Difference</b> is performed by <em>subtracting</em> each point in a polygon from the set of points in an open or closed path. The resulting polygon (or polygons) define the region that the original polygon would have passed over had it had been moved from the beginning to the end of that path. A key feature of Minkowski Difference is that when it's applied to two polygons, the resulting polygon will contain the coordinate space origin when the original polygons overlap (ie when they collide). </p>
+  <p class="Body"> <img src="../../../../Images/minkowski2.png" alt="" border="0" align="right"> <b>Minkowski Difference</b> is performed by <em>subtracting</em> each point in a polygon from the set of points in an open or closed path. A key feature of Minkowski Difference is that when it's applied to two polygons, the resulting polygon will contain the coordinate space origin whenever the two polygons touch or overlap. (This function is often used to determine when polygons collide.)<br><br> <em>In the image on the left the blue polygon is the 'minkowski difference' of the two red boxes. The black dot represents the coordinate space origin.</em> </p>
 
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Types/Path.htm">Path</a>, <a href="../Types/Paths.htm">Paths</a></p>
+  <p class="Body"><a href="MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Types/Path.htm">Path</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 

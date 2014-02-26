@@ -59,13 +59,13 @@
 <br>
 
 
-  <p class="Body"> <em>Filling</em> indicates regions that are <em>inside</em> a polygon (ie 'filled' with a brush color or pattern in a graphical display), and <em>non-filling</em> indicates regions <em>outside</em> polygons. The Clipper Library supports 4 filling rules: Even-Odd, Non-Zero, Positive and Negative.<br><br> The simplest filling rule is <em>Even-Odd</em> filling. Given a group of polygons and starting from a point outside, whenever a contour is crossed either filling starts if it had stopped or it stops if it had started. For example, given a single rectangular polygon, when its first (eg left) edge is crossed filling starts and we're inside the polygon. Filling stops again when the next (eg right) edge is crossed.<br><br> With the exception of <em>Even-Odd</em> filling, all other filling rules rely on <b>edge direction</b> and <b>winding numbers</b> to determine filling. Edge direction is determined by the order in which vertices are declared when constructing a polygon. Edge direction is used to determine the <b>winding numbers</b> of polygon regions and subregions.<br><br> <img src="../../../../Images/wn.png" alt="" width="16" height="16" border="0" align="absmiddle"> The winding number for any given polygon sub-region can be derived by: <ol>
+  <p class="Body"> <em>Filling</em> indicates those regions that are <em>inside</em> a closed path (ie 'filled' with a brush color or pattern in a graphical display) and those regions that are <em>outside</em>. The Clipper Library supports 4 filling rules: Even-Odd, Non-Zero, Positive and Negative.<br><br> The simplest filling rule is <em>Even-Odd</em> filling (sometimes called <em>alternate</em> filling). Given a group of closed paths start from a point outside the paths and progress along an imaginary line through the paths. When the first path is crossed the encountered region is filled. When the next path is crossed the encountered region is <em>not</em> filled. Likewise, each time a path is crossed, filling starts if it had stopped and stops if it had started.<br><br> With the exception of <em>Even-Odd</em> filling, all other filling rules rely on <b>edge direction</b> and <b>winding numbers</b> to determine filling. Edge direction is determined by the order in which vertices are declared when constructing a path. Edge direction is used to determine the <b>winding number</b> of each polygon subregion.<br><br> <img src="../../../../Images/wn.png" alt="" width="16" height="16" border="0" align="absmiddle"> The winding number for each polygon sub-region can be derived by: <ol>
 	
-      <li>starting with a winding number of zero</li>
+      <li>starting with a winding number of zero and</li>
 	
       <li>from a point (P1) that's outside all polygons, draw an imaginary line to a point that's inside a given sub-region (P2)</li>
 	
-      <li>while traversing the line from P1 to P2, for each polygon edge that crosses the line from right to left increment the winding number, and for each polygon edge that crosses the line from left to right decrement the winding number.</li>
+      <li>while traversing the line from P1 to P2, for each path that crosses the imaginary line from right to left increment the winding number, and for each path that crosses the line from left to right decrement the winding number.</li>
 
       <li>Once you arrive at the given sub-region you have its winding number.</li>
 
@@ -77,7 +77,7 @@
   <h2 id="Auto-SeeAlso">See Also</h2>
   <p class="Body"><a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Functions/Orientation.htm">Orientation</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.0.0 &nbsp; - &nbsp; Help file built on 30-October-2013 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
   
 </body>
 
