@@ -1974,7 +1974,7 @@ def _OffsetInternal(polys, isPolygon, delta, jointype = JoinType.Square, endtype
                 Normals[k].x * Normals[j].x + Normals[k].y * Normals[j].y)
         steps = round(step360 * abs(a));
         X,Y = Normals[k].x, Normals[k].y
-        for _ in range(steps):
+        for _ in range(int(steps)):
             result.append(Point(
                 round(pt.x + X * delta), round(pt.y + Y * delta)))
             X2 = X
