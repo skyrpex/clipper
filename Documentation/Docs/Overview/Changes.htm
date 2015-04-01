@@ -116,18 +116,89 @@
   <ul class="barebones expandable">
 
 
-    <!--   <li>
-    <h2>v6.1.X (XX December 2013)</h2><br>
-    <ul>
-      <li>
-        <h2>Bugfix:</h2>
-        <ul class="dots">
-        xxxxxxxxxxxxxxxxxxxxxxxxxxx
-        </ul>
-      </li>
-    </ul>
-  </li>
+    <!--   
+<li>
+  <h2>v6.2.X (XX December 2015)</h2><br>
+  <ul>
+    <li>
+      <h2>Bugfix:</h2>
+      <ul class="dots">
+      xxxxxxxxxxxxxxxxxxxxxxxxxxx
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>
  -->
+ 
+
+    <li> 
+      <h2>v6.2.1 (31 October 2014)</h2><br> 
+      <ul>
+    
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+      Bugfix in <strong><a href="../Units/ClipperLib/Classes/ClipperOffset/Methods/Execute.htm">ClipperOffset.Execute</a></strong> where the Polytree.IsHole property was returning incorrect values with negative offsets
+      
+          </ul> </li>
+  
+      </ul> 
+      <ul>
+    
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+      Very minor improvement to join rounding in ClipperOffset
+      
+          </ul> </li>
+  
+      </ul> 
+      <ul>
+    
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+      Fixed CPP OpenGL demo
+      
+          </ul> </li>
+  
+      </ul> </li>
+
+
+    <li> 
+      <h2>v6.2.0 (26 September 2014)</h2><br> 
+      <ul>
+      
+        <li> 
+          <h2>Bugfix:</h2> 
+          <ul class="dots">
+        Numerous minor bugfixes - too many to list. (See revisions 454-475 in Sourceforge Repository.)
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+        Parameters have changed in the <a href="../Units/ClipperLib/Types/ZFillCallback.htm"><b>custom callback function</b></a> that can be assigned to <a href="../Units/ClipperLib/Classes/Clipper/Properties/ZFillFunction.htm"><strong>ZFillFunction</strong></a>.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+        Deprecated functions have been removed.
+        
+          </ul> </li>
+      
+        <li> 
+          <h2>Modified:</h2> 
+          <ul class="dots">
+        The Curves demo has been temporarily removed. (It needs to be updated but that was holding up this latest release of the Clipper library.)
+        
+          </ul> </li>
+    
+      </ul> </li>
  
   
     <li> 
@@ -1189,9 +1260,9 @@ C++ translation of Delphi code
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="Deprecated.htm">Deprecated</a>, <a href="Rounding.htm">Rounding</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Constructor.htm">Clipper.Constructor</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPath.htm">ClipperBase.AddPath</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPaths.htm">ClipperBase.AddPaths</a>, <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm">ClipperOffset</a>, <a href="../Units/ClipperLib/Classes/PolyNode/_Body.htm">PolyNode</a>, <a href="../Units/ClipperLib/Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Units/ClipperLib/Functions/Area.htm">Area</a>, <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a>, <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a>, <a href="../Units/ClipperLib/Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/MinkowskiDiff.htm">MinkowskiDiff</a>, <a href="../Units/ClipperLib/Functions/MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Functions/PointInPolygon.htm">PointInPolygon</a>, <a href="../Units/ClipperLib/Functions/PolyTreeToPaths.htm">PolyTreeToPaths</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygon.htm">SimplifyPolygon</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygons.htm">SimplifyPolygons</a>, <a href="../Units/ClipperLib/PreProcessor/Defines.htm">Defines</a>, <a href="../Units/ClipperLib/Types/CInt.htm">CInt</a>, <a href="../Units/ClipperLib/Types/InitOptions.htm">InitOptions</a>, <a href="../Units/ClipperLib/Types/IntPoint.htm">IntPoint</a>, <a href="../Units/ClipperLib/Types/Path.htm">Path</a>, <a href="../Units/ClipperLib/Types/Paths.htm">Paths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a></p>
+  <p class="Body"><a href="Deprecated.htm">Deprecated</a>, <a href="Rounding.htm">Rounding</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Constructor.htm">Clipper.Constructor</a>, <a href="../Units/ClipperLib/Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Units/ClipperLib/Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPath.htm">ClipperBase.AddPath</a>, <a href="../Units/ClipperLib/Classes/ClipperBase/Methods/AddPaths.htm">ClipperBase.AddPaths</a>, <a href="../Units/ClipperLib/Classes/ClipperOffset/_Body.htm">ClipperOffset</a>, <a href="../Units/ClipperLib/Classes/ClipperOffset/Methods/Execute.htm">ClipperOffset.Execute</a>, <a href="../Units/ClipperLib/Classes/PolyNode/_Body.htm">PolyNode</a>, <a href="../Units/ClipperLib/Classes/PolyTree/_Body.htm">PolyTree</a>, <a href="../Units/ClipperLib/Functions/Area.htm">Area</a>, <a href="../Units/ClipperLib/Functions/CleanPolygon.htm">CleanPolygon</a>, <a href="../Units/ClipperLib/Functions/CleanPolygons.htm">CleanPolygons</a>, <a href="../Units/ClipperLib/Functions/ClosedPathsFromPolyTree.htm">ClosedPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/MinkowskiDiff.htm">MinkowskiDiff</a>, <a href="../Units/ClipperLib/Functions/MinkowskiSum.htm">MinkowskiSum</a>, <a href="../Units/ClipperLib/Functions/OffsetPaths.htm">OffsetPaths</a>, <a href="../Units/ClipperLib/Functions/OpenPathsFromPolyTree.htm">OpenPathsFromPolyTree</a>, <a href="../Units/ClipperLib/Functions/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Functions/PointInPolygon.htm">PointInPolygon</a>, <a href="../Units/ClipperLib/Functions/PolyTreeToPaths.htm">PolyTreeToPaths</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygon.htm">SimplifyPolygon</a>, <a href="../Units/ClipperLib/Functions/SimplifyPolygons.htm">SimplifyPolygons</a>, <a href="../Units/ClipperLib/PreProcessor/Defines.htm">Defines</a>, <a href="../Units/ClipperLib/Types/CInt.htm">CInt</a>, <a href="../Units/ClipperLib/Types/InitOptions.htm">InitOptions</a>, <a href="../Units/ClipperLib/Types/IntPoint.htm">IntPoint</a>, <a href="../Units/ClipperLib/Types/Path.htm">Path</a>, <a href="../Units/ClipperLib/Types/Paths.htm">Paths</a>, <a href="../Units/ClipperLib/Types/PolyFillType.htm">PolyFillType</a>, <a href="../Units/ClipperLib/Types/ZFillCallback.htm">ZFillCallback</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper 6.2.1 &nbsp; - &nbsp; Help file built on 1-November-2014 <br><br> </p>
   
 </body>
 

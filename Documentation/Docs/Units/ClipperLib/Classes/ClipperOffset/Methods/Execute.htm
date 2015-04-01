@@ -68,7 +68,7 @@
 <br>
 
 
-  <p class="Body"> This method takes two parameters. The first is the structure (either PolyTree or Paths) that will receive the result of the offset operation. The second parameter is the amount to which the supplied paths will be offset - negative delta values to shrink polygons and positive delta to expand them.<br><br> This method can be called multiple times, offsetting the same paths by different amounts (ie using different deltas).<br><br> <img src="../../../../../../Images/offset1.png" alt="" width="310" height="314" border="0" align="right"> 
+  <p class="Body"> This method takes two parameters. The first is the structure that receives the result of the offset operation (either a PolyTree or a Paths structure). The second parameter is the amount to which the supplied paths will be offset. Negative delta values shrink polygons and positive delta expand them.<br><br> This method can be called multiple times, offsetting the same paths by different amounts (ie using different deltas).<br><br> <img src="../../../../../../Images/offset1.png" alt="" width="310" height="314" border="0" align="right"> 
     <table cellspacing="0" cellpadding="0" border="0" align="left" style="margin: 0;" width="560px">
 
       <tr>
@@ -81,13 +81,14 @@ using namespace ClipperLib;
 
 int main()
 {
-  Paths subj(1), solution;
-  subj[0] &lt;&lt; 
+  Path subj;
+  Paths solution;
+  subj &lt;&lt; 
     IntPoint(348,257) &lt;&lt; IntPoint(364,148) &lt;&lt; IntPoint(362,148) &lt;&lt; 
     IntPoint(326,241) &lt;&lt; IntPoint(295,219) &lt;&lt; IntPoint(258,88) &lt;&lt; 
     IntPoint(440,129) &lt;&lt; IntPoint(370,196) &lt;&lt; IntPoint(372,275);
-  ClipperOffset co(jtRound);
-  co.AddPaths(subj, true);
+  ClipperOffset co;
+  co.AddPath(subj, jtRound, etClosedPolygon);
   co.Execute(solution, -7.0);
   
   //draw solution ...
@@ -103,7 +104,7 @@ int main()
 
 
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper 6.2.1 &nbsp; - &nbsp; Help file built on 1-November-2014 <br><br> </p>
   
 </body>
 

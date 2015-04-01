@@ -51,20 +51,20 @@
   <h1>ZFillCallback</h1>
 
 
-  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TZFillCallback = <b>procedure</b> (<b>const</b> Z1, Z2: TIntPoint; <b>var</b> Pt: TIntPoint);</p>
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TZFillCallback = <b>procedure</b> (<b>const</b> E1Bot, E1Top, E2Bot, E2Top: TIntPoint; <b>var</b> Pt: TIntPoint);</p>
 
-  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef void</b> (*TZFillCallback)(const IntPoint& z1, const IntPoint& z2, IntPoint& pt);</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef void</b> (*ZFillCallback)(const IntPoint&amp; e1bot, IntPoint&amp; e1top, IntPoint&amp; e2bot, IntPoint&amp; e2top, IntPoint&amp; pt);</p>
 
-  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public delegate void</b> TZFillCallback(IntPoint Z1, IntPoint Z2, <b>ref</b> IntPoint pt);</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public delegate void</b> ZFillCallback(IntPoint bot1, IntPoint top1, IntPoint bot2, IntPoint top2, ref IntPoint pt);</p>
 <br>
 
-  <p class="Body"> </p>
+  <p class="Body"> If the <a href="../PreProcessor/Defines.htm"><b>use_xyz</b></a> pre-processor directive is enabled, then the IntPoint class will have an extra 'Z' member and the Clipper class's <a href="../Classes/Clipper/Properties/ZFillFunction.htm">ZFillFunction</a> property will be exposed so it can be assigned a custom callback function.<br><br> This custom callback procedure requires five IntPoint parameters: the first 2 parameters are the vertices that define one line segment involved in the intersection and the next two parameters the other line segment. <em>(Since the Clipper library has been developed in an environment that uses an inverted Y axis display, e1bot and e2bot will always have Y values greater than or equal to their corresponding e1top and e2top Y values.)</em> The last IntPoint parameter contain the actual coordinates at the intersection. This last parameter is passed by reference so that its Z member can be assigned with a custom value.<br><br> </p>
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a></p>
+  <p class="Body"><a href="../Classes/Clipper/Properties/ZFillFunction.htm">Clipper.ZFillFunction</a>, <a href="../PreProcessor/Defines.htm">Defines</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper Ver 6.1.3 &nbsp; - &nbsp; Help file built on 20-January-2014 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2014 Angus Johnson&nbsp; - &nbsp; Clipper 6.2.1 &nbsp; - &nbsp; Help file built on 1-November-2014 <br><br> </p>
   
 </body>
 
